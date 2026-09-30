@@ -438,3 +438,36 @@ p{ margin:0 0 1.1em; }
 
   body.nav-open{ overflow:hidden; }
 }
+
+/* ==========================================================================
+   FOR THE GALLERY OF EACH LANDING PAGE
+   ========================================================================== */
+.gallery{
+  display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x proximity;
+  padding:4px 4px 14px; margin:-4px -4px 0;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin; scrollbar-color:var(--accent-soft) transparent;
+}
+.gallery::-webkit-scrollbar{ height:8px; }
+.gallery::-webkit-scrollbar-track{ background:transparent; }
+.gallery::-webkit-scrollbar-thumb{ background:var(--accent-soft); border-radius:999px; }
+.gallery::-webkit-scrollbar-thumb:hover{ background:var(--accent); }
+.gallery-thumb{
+  position:relative; flex:0 0 clamp(220px, 78vw, 300px); aspect-ratio:4/3;
+  padding:0; border:none; cursor:pointer; overflow:hidden;
+  border-radius:var(--radius); background:var(--paper-light);
+  box-shadow:var(--shadow-sm); scroll-snap-align:start;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.gallery-thumb:hover, .gallery-thumb:focus-visible{
+  transform:translateY(-4px); box-shadow:var(--shadow-md);
+}
+.gallery-thumb img{ width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.05); }
+.gallery-thumb::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(12,15,20,0) 55%, rgba(12,15,20,.78) 100%);
+}
+.gallery-thumb-caption{
+  position:absolute; left:16px; right:16px; bottom:14px; z-index:1;
+  color:var(--paper-light); font-size:.88rem; text-align:left; line-height:1.35;
+}
