@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Mondstadt — Chapter I')
-@section('description', 'Plan a trip to Mondstadt with Teyvat Travel Co.: itineraries, field notes and seasonal guidance for the Mondstadt chapter of your journey.')
+@section('description', 'Plan a trip to Mondstadt with Teyvat Travel Services: itineraries, field notes and seasonal guidance for the Mondstadt chapter of your journey.')
 @section('body-class', 'chapter-mondstadt')
 
 @section('content')
@@ -9,7 +9,7 @@
         <div class="container hero-inner">
             <div>
                 <h1>Mondstadt</h1>
-                <p class="hero-tagline">Where the wind writes the map for you.</p>
+                <p class="hero-tagline">The city of Freedom Expedition.</p>
             </div>
             <p class="hero-lede">A hill-country of open squares, vineyard terraces and clifftop windmills, Mondstadt rewards
                 travellers who are happy to let a festival, a breeze, or a stranger's recommendation reroute the day.</p>
@@ -64,6 +64,13 @@
             </aside>
         </div>
     </section>
+    @include('partials.signature-package', [
+        'title' => 'The City of Freedom Expedition',
+        'price' => '₱12,500 / person · 3 Days, 2 Nights',
+        'description' => 'Experience the romantic charm of windmills, rolling green hills, and historic stone architecture. Perfect for travelers looking for a relaxing nature getaway.',
+        'stops' => ['Cider Lake', 'Windrise', 'Cathedral of Mondstadt'],
+    ])
+
     <section class="itineraries">
         <div class="container">
             <div class="section-head">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Inazuma — Chapter III')
-@section('description', 'Plan a trip to Inazuma with Teyvat Travel Co.: itineraries, field notes and seasonal guidance for the Inazuma chapter of your journey.')
+@section('description', 'Plan a trip to Inazuma with Teyvat Travel Services: itineraries, field notes and seasonal guidance for the Inazuma chapter of your journey.')
 @section('body-class', 'chapter-inazuma')
 
 @section('content')
@@ -9,7 +9,7 @@
         <div class="container hero-inner">
             <div>
                 <h1>Inazuma</h1>
-                <p class="hero-tagline">Islands that keep their own weather, and their own time.</p>
+                <p class="hero-tagline">The Realm of Eternal Thunder</p>
             </div>
             <p class="hero-lede">A scattered archipelago under frequently dramatic skies, Inazuma moves at the pace of the
                 tide and the ferry schedule, and asks travellers to do the same.</p>
@@ -62,6 +62,13 @@
             </aside>
         </div>
     </section>
+    @include('partials.signature-package', [
+        'title' => 'The Realm of Eternal Thunder',
+        'price' => '₱18,000 / person · 4 Days, 3 Nights',
+        'description' => 'Discover a culturally rich archipelago featuring striking purple foliage, traditional shrines, and serene coastal views.',
+        'stops' => ['Narukami Island Grand Shrine', 'Ritou Trading Port', 'Tenshukaku'],
+    ])
+
     <section class="itineraries">
         <div class="container">
             <div class="section-head">
@@ -90,10 +97,10 @@
     @include('partials.gallery', [
         'nation' => 'inazuma',
         'photos' => [
-            ['src' => 'images/nations/gallery/inazuma-1.jpg', 'caption' => "A temple view of inazuma"],
-            ['src' => 'images/nations/gallery/inazuma-2.jpg', 'caption' => "The sacred tree of inazuma"],
+            ['src' => 'images/nations/gallery/inazuma-1.jpg', 'caption' => "A ferry crossing between two islands"],
+            ['src' => 'images/nations/gallery/inazuma-2.jpg', 'caption' => "Storm clouds gathering over the strait"],
             ['src' => 'images/nations/gallery/inazuma-3.jpg', 'caption' => "A shrine path under a quiet grove"],
-            ['src' => 'images/nations/gallery/inazuma-4.jpg', 'caption' => "Night time at Inazuma"],
+            ['src' => 'images/nations/gallery/inazuma-4.jpg', 'caption' => "Fishing boats resting at low tide"],
         ]
     ])
 

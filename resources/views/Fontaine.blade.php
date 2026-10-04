@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Fontaine — Chapter V')
-@section('description', 'Plan a trip to Fontaine with Teyvat Travel Co.: itineraries, field notes and seasonal guidance for the Fontaine chapter of your journey.')
+@section('description', 'Plan a trip to Fontaine with Teyvat Travel Services: itineraries, field notes and seasonal guidance for the Fontaine chapter of your journey.')
 @section('body-class', 'chapter-fontaine')
 
 @section('content')
@@ -9,7 +9,7 @@
         <div class="container hero-inner">
             <div>
                 <h1>Fontaine</h1>
-                <p class="hero-tagline">A city that settles its arguments by the light of chandeliers.</p>
+                <p class="hero-tagline">The Capital of Justice, Steam, and Aquanics.</p>
             </div>
             <p class="hero-lede">Fontaine is a canal city built around the theatre of justice and the theatre of the stage
                 in roughly equal measure, with waterways doing double duty as streets.</p>
@@ -61,6 +61,13 @@
             </aside>
         </div>
     </section>
+    @include('partials.signature-package', [
+        'title' => 'The Capital of Justice, Steam, and Aquanics',
+        'price' => '₱20,000 / person · 5 Days, 4 Nights',
+        'description' => 'Step into a picturesque hub of art, fashion, and advanced clockwork engineering surrounded by pristine waters.',
+        'stops' => ['Court of Fontaine', 'Opera Epiclese', 'Lucine Fountain'],
+    ])
+
     <section class="itineraries">
         <div class="container">
             <div class="section-head">
@@ -89,10 +96,10 @@
     @include('partials.gallery', [
         'nation' => 'fontaine',
         'photos' => [
-            ['src' => 'images/nations/gallery/fontaine-1.jpg', 'caption' => "Aerial views of Fontaine’s canals"],
-            ['src' => 'images/nations/gallery/fontaine-2.jpg', 'caption' => "Exploring Fontaine’s underwater ruins"],
-            ['src' => 'images/nations/gallery/fontaine-3.jpg', 'caption' => "A grand view of Fontaine’s skyline"],
-            ['src' => 'images/nations/gallery/fontaine-4.jpg', 'caption' => "Elegant streets of Fontaine’s city"],
+            ['src' => 'images/nations/gallery/fontaine-1.jpg', 'caption' => "A canal boat gliding beneath an arched bridge"],
+            ['src' => 'images/nations/gallery/fontaine-2.jpg', 'caption' => "The courthouse district at golden hour"],
+            ['src' => 'images/nations/gallery/fontaine-3.jpg', 'caption' => "Viewing galleries beneath the canal"],
+            ['src' => 'images/nations/gallery/fontaine-4.jpg', 'caption' => "Chandeliers lit for the evening performance"],
         ]
     ])
 

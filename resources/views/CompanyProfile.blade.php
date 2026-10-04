@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Company Profile & About the Director')
-@section('description', 'Teyvat Travel Co. is an independent, sole-proprietor travel agency covering all seven nations of Teyvat. Learn about the company and its founding Director.')
+@section('description', 'Teyvat Travel Services is an independent, sole-proprietor travel agency covering all seven nations of Teyvat. Learn about the company and its founding Director.')
 @section('body-class', 'chapter-profile')
 
 @section('content')
@@ -12,9 +12,9 @@
                     <span class="seal">TT</span>
                     <span class="chapter-label">Company profile</span>
                 </div>
-                <h1>Teyvat Travel Co.</h1>
+                <h1>Teyvat Travel Services</h1>
                 <p class="hero-tagline">One desk. Seven nations. Every itinerary personally reviewed.</p>
-                <p class="hero-lede">Teyvat Travel Co. is an independent, sole-proprietor travel agency built around a
+                <p class="hero-lede">Teyvat Travel Services is an independent, sole-proprietor travel agency built around a
                     simple premise: a traveller planning a route across the seven nations deserves an itinerary shaped by
                     someone who has actually walked it — not a catalogue assembled from a distance.</p>
                 <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;">
@@ -69,7 +69,7 @@
         <div class="container content-grid">
             <div class="journal">
                 <h2>Our story</h2>
-                <p class="dropcap">Teyvat Travel Co. began with a single traveller's notebook. Long before it was an agency,
+                <p class="dropcap">Teyvat Travel Services began with a single traveller's notebook. Long before it was an agency,
                     it was a set of hand-kept journals — routes tried, tea houses worth trusting, windmills worth timing a
                     visit around — carried from Mondstadt's hills to Snezhnaya's tundra and back. Friends started asking to
                     borrow the notes. Eventually, borrowing the notes turned into asking for a whole itinerary.</p>
@@ -77,7 +77,7 @@
                     agency sells has been walked, sailed, or sledded by the Director first. Nothing is listed on the
                     strength of a brochure alone.</p>
                 <h2>How we work</h2>
-                <p>As a sole proprietorship, Teyvat Travel Co. stays deliberately small. There is one desk, one director,
+                <p>As a sole proprietorship, Teyvat Travel Services stays deliberately small. There is one desk, one director,
                     and a short list of trusted local partners in each nation — vineyard estates in Mondstadt, harbour
                     guides in Liyue, ferry operators in Inazuma, and so on. That size is a feature: every booking gets read
                     by a person who knows the destination, not routed through a call centre.</p>
@@ -85,7 +85,7 @@
                     against real capacity, confirming bookings, and following up on payments and travel documents — all
                     handled from the same desk that plans the route itself.</p>
                 <h2 id="director">About the Director</h2>
-                <p>The Director founded Teyvat Travel Co. after years of independent travel across all seven nations, and
+                <p>The Director founded Teyvat Travel Services after years of independent travel across all seven nations, and
                     remains personally involved in every itinerary the agency sells. Reachable directly through the booking
                     desk, the Director reviews each traveller's route before it's confirmed — a habit the agency has never
                     automated away, even as the booking system itself has moved online.</p>
@@ -151,8 +151,7 @@
             <ul class="timeline">
                 <li><span class="yr">2015</span>A first solo journey across all seven nations, kept as a hand-written travel
                     journal.</li>
-                <li><span class="yr">2018</span>Teyvat Travel Co. founded as a two-desk office in Mondstadt, booking trips
-                    by referral only.</li>
+                <li><span class="yr">2018</span>Teyvat Travel Services is established in Mondstadt by the Director.</li>
                 <li><span class="yr">2021</span>Full itinerary catalogue launched, covering guided routes in all seven
                     nations.</li>
                 <li><span class="yr">2026</span>Booking, scheduling and payment tracking consolidated into a single online
