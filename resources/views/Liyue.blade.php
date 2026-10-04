@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Liyue — Chapter II')
-@section('description', 'Plan a trip to Liyue with Teyvat Travel Co.: itineraries, field notes and seasonal guidance for the Liyue chapter of your journey.')
+@section('description', 'Plan a trip to Liyue with Teyvat Travel Services: itineraries, field notes and seasonal guidance for the Liyue chapter of your journey.')
 @section('body-class', 'chapter-liyue')
 
 @section('content')
@@ -9,7 +9,7 @@
         <div class="container hero-inner">
             <div>
                 <h1>Liyue</h1>
-                <p class="hero-tagline">A harbour built on the keeping of promises.</p>
+                <p class="hero-tagline">The Harbor of Stone and Commerce.</p>
             </div>
             <p class="hero-lede">Liyue is a trading port grown up the side of a mountain range, where jade-toned cliffs meet
                 a working harbour and a handshake still counts for more than paperwork.</p>
@@ -62,6 +62,13 @@
             </aside>
         </div>
     </section>
+    @include('partials.signature-package', [
+        'title' => 'The Harbor of Stone and Commerce',
+        'price' => '₱15,000 / person · 4 Days, 3 Nights',
+        'description' => 'A bustling port city tour blending breathtaking mountain ranges, ancient folklore, and world-class culinary adventures.',
+        'stops' => ['Liyue Harbor', 'Mt. Aocang', 'Wangshu Inn'],
+    ])
+
     <section class="itineraries">
         <div class="container">
             <div class="section-head">
@@ -90,8 +97,8 @@
     @include('partials.gallery', [
         'nation' => 'liyue',
         'photos' => [
-            ['src' => 'images/nations/gallery/liyue-1.jpg', 'caption' => "A rich beutiful landscape"],
-            ['src' => 'images/nations/gallery/liyue-2.jpg', 'caption' => "Nightview of the village"],
+            ['src' => 'images/nations/gallery/liyue-1.jpg', 'caption' => "Lanterns drifting above the harbour at dusk"],
+            ['src' => 'images/nations/gallery/liyue-2.jpg', 'caption' => "Stone stairways climbing the terraced cliffs"],
             ['src' => 'images/nations/gallery/liyue-3.jpg', 'caption' => "The night market in full swing"],
             ['src' => 'images/nations/gallery/liyue-4.jpg', 'caption' => "A tea house balcony overlooking the docks"],
         ]

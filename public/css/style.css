@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Teyvat Travel Co. — shared stylesheet
+   Teyvat Travel Services — shared stylesheet
    Modern travel-brand palette: crisp neutral surfaces, a constant amber
    brand accent in the chrome (nav/footer/logo), and a vivid, saturated
    accent color per nation that tints buttons, dropcaps, card edges and
@@ -471,3 +471,34 @@ p{ margin:0 0 1.1em; }
   position:absolute; left:16px; right:16px; bottom:14px; z-index:1;
   color:var(--paper-light); font-size:.88rem; text-align:left; line-height:1.35;
 }
+
+/* ==========================================================================
+   Signature Package (nation pages) — the official per-nation tour package
+   ========================================================================== */
+.signature-package{
+  position:relative; overflow:hidden;
+  background:var(--paper-light); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-sm); padding:30px 32px 32px; margin-block:12px 40px;
+}
+.signature-package::before{
+  content:''; position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg, var(--accent), var(--accent-deep));
+}
+.signature-package-tag{
+  display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--accent-deep); background:var(--accent-soft);
+  padding:5px 12px; border-radius:999px; margin-bottom:12px;
+}
+.signature-package-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.signature-package-head h2{ margin-bottom:0; }
+.signature-package-price{
+  font-family:var(--font-display); font-weight:700; font-size:1.2rem;
+  color:var(--accent-deep); margin:0; white-space:nowrap;
+}
+.signature-package-body{ display:grid; grid-template-columns:1.3fr .7fr; gap:32px; margin-top:16px; }
+@media (max-width:760px){ .signature-package-body{ grid-template-columns:1fr; } }
+.signature-package-desc{ color:var(--ink); font-size:1rem; margin:0; }
+.signature-package-stops{ border-left:3px solid var(--accent); padding-left:18px; }
+.signature-package-stops h3{ font-size:.9rem; margin-bottom:8px; }
+.signature-package-stops ul{ margin:0; padding-left:18px; color:var(--ink-soft); font-size:.92rem; }
+.signature-package-stops li{ margin-bottom:6px; }

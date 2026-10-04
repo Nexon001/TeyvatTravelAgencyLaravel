@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@yield('title') | Teyvat Travel Co.</title>
+  <title>@yield('title') | Teyvat Travel Services</title>
   <meta name="description" content="@yield('description')">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
@@ -22,7 +22,7 @@
           <path d="M24 10 L28 22 L24 38 L20 22 Z" fill="#a1791f"></path>
           <circle cx="24" cy="24" fill="#f8f3e4" r="3"></circle>
         </svg>
-        <span>Teyvat Travel Co.<span class="co">Journeys through the Seven Nations</span></span>
+        <span>Teyvat Travel Services<span class="co">Journeys through the Seven Nations</span></span>
       </a>
       <button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" type="button">
         <span></span>
@@ -53,7 +53,7 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <h4>Teyvat Travel Co.</h4>
+        <h4>Teyvat Travel Services</h4>
         <p style="max-width:34ch; color:var(--ink-soft); font-size:.92rem;">Independent, itinerary-first travel planning
           across all seven nations — one desk, one director, one dossier per traveller.</p>
       </div>
@@ -79,7 +79,7 @@
       </div>
     </div>
     <div class="container footer-bottom">
-      <span>© 2026 Teyvat Travel Co. All rights reserved.</span>
+      <span>© 2026 Teyvat Travel Services. All rights reserved.</span>
       <span>Sole proprietorship · est. Mondstadt</span>
     </div>
   </footer>
@@ -116,6 +116,81 @@
       // reset if the window is resized up to desktop width
       window.matchMedia('(min-width: 861px)').addEventListener('change', function (m) {
         if (m.matches) setOpen(false);
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      var galleries = document.querySelectorAll('.gallery-thumb');
+      if (!galleries.length) return;
+
+      var lightboxes = {};
+      document.querySelectorAll('.lightbox').forEach(function (lb) {
+        lightboxes[lb.dataset.lightbox] = lb;
+      });
+
+      var current = { key: null, index: 0, thumbs: [] };
+
+      function showSlide() {
+        var lb = lightboxes[current.key];
+        var thumb = current.thumbs[current.index];
+        var img = thumb.querySelector('img');
+        var caption = thumb.dataset.caption || img.alt || '';
+        var lbImg = lb.querySelector('.lightbox-image');
+        lbImg.src = img.src;
+        lbImg.alt = caption;
+        lb.querySelector('.lightbox-caption').textContent = caption;
+      }
+
+      function openLightbox(key, index) {
+        var lb = lightboxes[key];
+        if (!lb) return;
+        current.key = key;
+        current.thumbs = Array.from(document.querySelectorAll('.gallery[data-gallery="' + key + '"] .gallery-thumb'));
+        current.index = index;
+        showSlide();
+        lb.classList.add('is-open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-open');
+        lb.querySelector('.lightbox-close').focus();
+      }
+
+      function closeLightbox() {
+        if (!current.key) return;
+        var lb = lightboxes[current.key];
+        lb.classList.remove('is-open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('lightbox-open');
+        current.key = null;
+      }
+
+      function step(delta) {
+        if (!current.key) return;
+        var len = current.thumbs.length;
+        current.index = (current.index + delta + len) % len;
+        showSlide();
+      }
+
+      document.querySelectorAll('.gallery').forEach(function (galleryEl) {
+        var key = galleryEl.dataset.gallery;
+        var thumbs = Array.from(galleryEl.querySelectorAll('.gallery-thumb'));
+        thumbs.forEach(function (btn, idx) {
+          btn.addEventListener('click', function () { openLightbox(key, idx); });
+        });
+      });
+
+      document.querySelectorAll('.lightbox').forEach(function (lb) {
+        lb.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+        lb.querySelector('.lightbox-backdrop').addEventListener('click', closeLightbox);
+        lb.querySelector('.lightbox-prev').addEventListener('click', function () { step(-1); });
+        lb.querySelector('.lightbox-next').addEventListener('click', function () { step(1); });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (!current.key) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') step(-1);
+        if (e.key === 'ArrowRight') step(1);
       });
     })();
   </script>

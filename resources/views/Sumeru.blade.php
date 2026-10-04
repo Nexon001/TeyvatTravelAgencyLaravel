@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Sumeru — Chapter IV')
-@section('description', 'Plan a trip to Sumeru with Teyvat Travel Co.: itineraries, field notes and seasonal guidance for the Sumeru chapter of your journey.')
+@section('description', 'Plan a trip to Sumeru with Teyvat Travel Services: itineraries, field notes and seasonal guidance for the Sumeru chapter of your journey.')
 @section('body-class', 'chapter-sumeru')
 
 @section('content')
@@ -9,7 +9,7 @@
         <div class="container hero-inner">
             <div>
                 <h1>Sumeru</h1>
-                <p class="hero-tagline">A library that grew a rainforest, and a desert that remembers everything.</p>
+                <p class="hero-tagline">The City of Wisdom & Rainforest Retreat.</p>
             </div>
             <p class="hero-lede">Sumeru holds two landscapes at once — a dense rainforest and a wide desert — joined by a
                 culture that treats curiosity as a form of hospitality.</p>
@@ -62,6 +62,13 @@
             </aside>
         </div>
     </section>
+    @include('partials.signature-package', [
+        'title' => 'The City of Wisdom & Rainforest Retreat',
+        'price' => '₱14,000 / person · 3 Days, 3 Nights',
+        'description' => 'A dual-environment journey taking you from the majestic halls of learning to the dense, mystical canopies of the rainforest.',
+        'stops' => ['Sumeru City Academy', 'Gandharva Ville', 'Caravan Ribat'],
+    ])
+
     <section class="itineraries">
         <div class="container">
             <div class="section-head">
@@ -90,9 +97,9 @@
     @include('partials.gallery', [
         'nation' => 'sumeru',
         'photos' => [
-            ['src' => 'images/nations/gallery/sumeru-1.jpg', 'caption' => "An ancient structure in the desert"],
-            ['src' => 'images/nations/gallery/sumeru-2.jpg', 'caption' => "A village in a stone hill"],
-            ['src' => 'images/nations/gallery/sumeru-3.jpg', 'caption' => "A pyramid resting for the night"],
+            ['src' => 'images/nations/gallery/sumeru-1.jpg', 'caption' => "Raised walkways threading through the canopy"],
+            ['src' => 'images/nations/gallery/sumeru-2.jpg', 'caption' => "Sandstone ruins at the desert's edge"],
+            ['src' => 'images/nations/gallery/sumeru-3.jpg', 'caption' => "A caravan resting for the night"],
             ['src' => 'images/nations/gallery/sumeru-4.jpg', 'caption' => "The desert sky just after dark"],
         ]
     ])

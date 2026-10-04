@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Natlan — Chapter VI')
-@section('description', 'Plan a trip to Natlan with Teyvat Travel Co.: itineraries, field notes and seasonal guidance for the Natlan chapter of your journey.')
+@section('description', 'Plan a trip to Natlan with Teyvat Travel Services: itineraries, field notes and seasonal guidance for the Natlan chapter of your journey.')
 @section('body-class', 'chapter-natlan')
 
 @section('content')
@@ -9,7 +9,7 @@
         <div class="container hero-inner">
             <div>
                 <h1>Natlan</h1>
-                <p class="hero-tagline">A nation that measures a life by how it's celebrated.</p>
+                <p class="hero-tagline">The Land of Ash, Hot Springs, and Valor.</p>
             </div>
             <p class="hero-lede">Natlan is built in fire-lit terraces and measures its calendar in festivals, with drum
                 processions that turn nearly any evening into an event worth staying up for.</p>
@@ -64,6 +64,13 @@
             </aside>
         </div>
     </section>
+    @include('partials.signature-package', [
+        'title' => 'The Land of Ash, Hot Springs, and Valor',
+        'price' => '₱16,500 / person · 4 Days, 3 Nights',
+        'description' => 'An energetic adventure featuring dramatic volcanic landscapes, therapeutic thermal springs, and vibrant tribal festivals.',
+        'stops' => ['Tepecac Stadium', 'Children of the Echoes Canyon', 'People of the Springs basin'],
+    ])
+
     <section class="itineraries">
         <div class="container">
             <div class="section-head">
@@ -92,10 +99,10 @@
     @include('partials.gallery', [
         'nation' => 'natlan',
         'photos' => [
-            ['src' => 'images/nations/gallery/natlan-1.jpg', 'caption' => "Scenic views across Natlan"],
-            ['src' => 'images/nations/gallery/natlan-2.jpg', 'caption' => "Natlan’s vibrant highlands"],
-            ['src' => 'images/nations/gallery/natlan-3.jpg', 'caption' => "A bustling settlement in the highlands"],
-            ['src' => 'images/nations/gallery/natlan-4.jpg', 'caption' => "Dramatic cliffs of Natlan"],
+            ['src' => 'images/nations/gallery/natlan-1.jpg', 'caption' => "Torches lit in sequence up the terraces"],
+            ['src' => 'images/nations/gallery/natlan-2.jpg', 'caption' => "A shared grill at the plaza's edge"],
+            ['src' => 'images/nations/gallery/natlan-3.jpg', 'caption' => "Riders crossing the highland at dawn"],
+            ['src' => 'images/nations/gallery/natlan-4.jpg', 'caption' => "Drummers leading the procession uphill"],
         ]
     ])
 

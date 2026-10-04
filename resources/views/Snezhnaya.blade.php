@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Snezhnaya — Chapter VII')
-@section('description', 'Plan a trip to Snezhnaya with Teyvat Travel Co.: itineraries, field notes and seasonal guidance for the Snezhnaya chapter of your journey.')
+@section('description', 'Plan a trip to Snezhnaya with Teyvat Travel Services: itineraries, field notes and seasonal guidance for the Snezhnaya chapter of your journey.')
 @section('body-class', 'chapter-snezhnaya')
 
 @section('content')
@@ -9,7 +9,7 @@
         <div class="container hero-inner">
             <div>
                 <h1>Snezhnaya</h1>
-                <p class="hero-tagline">The quiet at the edge of the map.</p>
+                <p class="hero-tagline">The Eternal White Tundra.</p>
             </div>
             <p class="hero-lede">Snezhnaya is the coldest and least-visited of the seven nations, a frost-built country of
                 aurora-lit tundra where the pace of travel slows to match the season.</p>
@@ -62,6 +62,13 @@
             </aside>
         </div>
     </section>
+    @include('partials.signature-package', [
+        'title' => 'The Eternal White Tundra',
+        'price' => '₱22,000 / person · 5 Days, 4 Nights',
+        'description' => 'A majestic winter expedition exploring frosted architectural marvels, grand palaces, and cozy alpine chalets under the aurora.',
+        'stops' => ['Zapolyarny Palace outskirts', 'Frost-bound Valleys', 'Glacial Outposts'],
+    ])
+
     <section class="itineraries">
         <div class="container">
             <div class="section-head">
@@ -90,10 +97,10 @@
     @include('partials.gallery', [
         'nation' => 'snezhnaya',
         'photos' => [
-            ['src' => 'images/nations/gallery/snezhnaya-1.jpg', 'caption' => "Snow-covered villages of Snezhnaya"],
-            ['src' => 'images/nations/gallery/snezhnaya-2.jpg', 'caption' => "Frozen peaks and snowy landscapes"],
-            ['src' => 'images/nations/gallery/snezhnaya-3.jpg', 'caption' => "A glimpse beyond the horizon"],
-            ['src' => 'images/nations/gallery/snezhnaya-4.jpg', 'caption' => "Snezhnaya beneath the northern sky"],
+            ['src' => 'images/nations/gallery/snezhnaya-1.jpg', 'caption' => "Aurora light over the frost-carved rooftops"],
+            ['src' => 'images/nations/gallery/snezhnaya-2.jpg', 'caption' => "A sled route cutting across the tundra"],
+            ['src' => 'images/nations/gallery/snezhnaya-3.jpg', 'caption' => "Frosted windows of a warming hall"],
+            ['src' => 'images/nations/gallery/snezhnaya-4.jpg', 'caption' => "Peaks catching the last of the daylight"],
         ]
     ])
 
