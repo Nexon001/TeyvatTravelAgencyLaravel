@@ -29,7 +29,7 @@
       </button>
       <nav aria-label="Primary" class="site-nav">
         <ul>
-          <li><a href="{{ route('home') }}" {!! $navActive('home') !!}>Company Profile</a></li>
+          <li><a href="{{ route('home') }}" {!! $navActive('home') !!}>About Us</a></li>
           <li class="has-dropdown">
             <a href="javascript:void(0);" role="button" aria-haspopup="true">Destinations<span
                 class="dropdown-caret">▾</span></a>
