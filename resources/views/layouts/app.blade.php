@@ -90,7 +90,7 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 {{-- Scripts: one file per feature in public/js. toast.js must load first (others call Teyvat.toast). --}}
-@foreach (['toast', 'nav', 'actions', 'itineraries', 'search', 'lightbox'] as $script)
+@foreach (['toast', 'nav', 'actions', 'itineraries', 'hero', 'lightbox'] as $script)
 <script src="{{ $jsUrl($script) }}" defer></script>
 @endforeach
 @yield('scripts')
