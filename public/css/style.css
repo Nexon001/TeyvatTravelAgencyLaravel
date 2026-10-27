@@ -499,6 +499,44 @@ body.lightbox-open{ overflow:hidden; }
 }
 .toast.is-visible{ opacity:1; transform:translate(-50%,0); }
 
+/* ---------- contact form ----------
+   Paste this block into public/css/style.css, just above the "Responsive" section. */
+.contact{ display:grid; grid-template-columns:5fr 7fr; gap:64px; align-items:start; }
+.contact-intro p{ color:var(--ink-soft); }
+.contact-form{
+  display:grid; gap:18px; padding:28px;
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow-md);
+}
+.contact-row{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.contact-field{ display:grid; gap:6px; }
+.contact-field label{ font-weight:600; font-size:.88rem; color:var(--navy); }
+.contact-field input,
+.contact-field select,
+.contact-field textarea{
+  width:100%; padding:12px 14px; font:inherit; color:inherit;
+  background:#fff; border:1px solid var(--line); border-radius:var(--radius-sm);
+}
+.contact-field textarea{ resize:vertical; min-height:130px; }
+.contact-field input:focus-visible,
+.contact-field select:focus-visible,
+.contact-field textarea:focus-visible{ outline:2px solid var(--accent); outline-offset:1px; }
+.contact-error{ font-size:.82rem; color:#b3261e; }
+.contact-alert{ padding:12px 16px; border-radius:var(--radius-sm); font-size:.9rem; }
+.contact-alert--ok{ background:#e7f4ea; color:#1e5b2d; }
+.contact-alert--err{ background:#fdeceb; color:#b3261e; }
+.contact-form .btn{ justify-self:start; }
+.contact-hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+
+@media (max-width:900px){
+  .contact{ grid-template-columns:1fr; gap:32px; }
+  .nav-actions{ flex-wrap:wrap; }   /* room for Log in / Sign up / Book Now in the mobile menu */
+}
+@media (max-width:640px){
+  .contact-row{ grid-template-columns:1fr; }
+  .contact-form{ padding:20px; }
+  .contact-form .btn{ justify-self:stretch; }
+}
+
 /* ==========================================================================
    Responsive
    ========================================================================== */

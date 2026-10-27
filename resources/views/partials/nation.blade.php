@@ -60,7 +60,8 @@
                 <strong>Need a custom itinerary?</strong>
                 <p>We can tailor the trip to your preferences, group size, and schedule.</p>
             </div>
-            <a class="btn btn-outline btn-sm" href="mailto:desk@teyvattravel.co">Contact Us <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+            {{-- Leads to the homepage contact form with this nation pre-selected --}}
+            <a class="btn btn-outline btn-sm" href="{{ route('home', ['nation' => $slug]) }}#contact">Contact Us <svg class="icon"><use href="#i-arrow-right"/></svg></a>
         </div>
     </div>
 </section>

@@ -43,10 +43,12 @@
         </li>
         <li><a href="{{ route('home') }}#itineraries">Itineraries</a></li>
         <li><a href="{{ route('home') }}#about">About Us</a></li>
+        <li><a href="{{ route('home') }}#contact">Contact</a></li>
       </ul>
       <div class="nav-actions">
-        {{-- Backend hooks: both buttons fire a "teyvat:action" event (see script at the bottom). --}}
-        <button type="button" class="nav-icon-btn" data-action="search" aria-label="Search"><svg class="icon"><use href="#i-search"/></svg></button>
+        {{-- Backend hooks: these buttons fire a "teyvat:action" event (see script at the bottom). --}}
+        <button type="button" class="btn btn-outline btn-pill btn-sm" data-action="login">Log in</button>
+        <button type="button" class="btn btn-outline btn-pill btn-sm" data-action="signup">Sign up</button>
         <button type="button" class="btn btn-gold btn-pill btn-sm" data-action="book-now">Book Now</button>
       </div>
     </nav>
@@ -77,7 +79,8 @@
         <li><a href="{{ route('home') }}#about">About us</a></li>
         <li><a href="{{ route('home') }}#director">About the Director</a></li>
         <li><a href="{{ route('home') }}#itineraries">Featured itineraries</a></li>
-        <li><a href="mailto:desk@teyvattravel.co">desk@teyvattravel.co</a></li>
+        <li><a href="{{ route('home') }}#contact">Contact us</a></li>
+        <li><span>desk@teyvattravel.co</span></li>
       </ul>
     </div>
   </div>
