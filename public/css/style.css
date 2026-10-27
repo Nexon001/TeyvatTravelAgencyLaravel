@@ -499,8 +499,7 @@ body.lightbox-open{ overflow:hidden; }
 }
 .toast.is-visible{ opacity:1; transform:translate(-50%,0); }
 
-/* ---------- contact form ----------
-   Paste this block into public/css/style.css, just above the "Responsive" section. */
+/* ---------- contact form ---------- */
 .contact{ display:grid; grid-template-columns:5fr 7fr; gap:64px; align-items:start; }
 .contact-intro p{ color:var(--ink-soft); }
 .contact-form{
