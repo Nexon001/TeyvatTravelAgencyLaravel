@@ -26,12 +26,17 @@
     <div class="container">
         <ul class="facts">
             @foreach ($n['facts'] as $i => $fact)
-                <li class="fact">
+                {{-- A 3rd value in the fact (gallery photo number) adds a hover / focus popup photo. --}}
+                @php $peekPhoto = $fact[2] ?? null; @endphp
+                <li class="fact{{ $peekPhoto ? ' has-peek' : '' }}" @if ($peekPhoto) tabindex="0" @endif>
                     <span class="icon-badge"><svg class="icon"><use href="#i-{{ $factIcons[$i] }}"/></svg></span>
                     <div>
                         <span class="fact-label">{{ $fact[0] }}</span>
                         <strong class="fact-value">{{ $fact[1] }}</strong>
                     </div>
+                    @if ($peekPhoto)
+                        @include('partials.peek', ['src' => asset(is_int($peekPhoto) ? 'images/nations/gallery/'.$slug.'-'.$peekPhoto.'.jpg' : $peekPhoto)])
+                    @endif
                 </li>
             @endforeach
         </ul>
