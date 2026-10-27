@@ -4,6 +4,8 @@
  * Static content for the seven nation pages and the home page.
  * Shape mirrors what a database query would return later (nation -> itineraries),
  * so this file can be swapped for Eloquent models without touching the views.
+ * 'facts': [label, value, gallery photo number (1-4)]. When the 3rd value is present, hovering that fact
+ * shows gallery photo N in a popup (the 4th fact has none). Change the number to change the popup photo.
  * NOTE: prices on the 2nd and 3rd itinerary of each nation are sample values.
  */
 
@@ -15,9 +17,9 @@ return [
         'tagline' => 'Where the wind writes the map for you.',
         'lede' => 'A hill-country of open squares, vineyard terraces and clifftop windmills, Mondstadt rewards travellers who are happy to let a festival, a breeze, or a stranger\'s recommendation reroute the day.',
         'facts' => [
-            ['Best season', 'Late spring to early autumn'],
-            ['Known for', 'Vineyard valleys & clifftop windmills'],
-            ['Signature taste', 'Hillside orchard wine'],
+            ['Best season', 'Late spring to early autumn', 'images/nations/hover-gallery/Late-Spring-Mondstadt.jpg'],
+            ['Known for', 'Vineyard valleys & clifftop windmills', 'images/nations/hover-gallery/Vineyard-Valley.jpg'],
+            ['Signature taste', 'Hillside orchard wine', 'images/nations/hover-gallery/Hillside-Orchard-Wine.jpg'],
             ['Travel pace', 'Easygoing, festival-led'],
         ],
         'story' => [
@@ -85,9 +87,9 @@ return [
         'tagline' => 'A harbour built on the keeping of promises.',
         'lede' => 'Liyue is a trading port grown up the side of a mountain range, where jade-toned cliffs meet a working harbour and a handshake still counts for more than paperwork.',
         'facts' => [
-            ['Best season', 'Autumn, during the lantern season'],
-            ['Known for', 'Terraced port & jade-toned peaks'],
-            ['Signature taste', 'Harbourside tea houses'],
+            ['Best season', 'Autumn, during the lantern season', 'images/nations/hover-gallery/Lantern-Season-Liyue.jpg'],
+            ['Known for', 'Terraced port & jade-toned peaks', 'images/nations/hover-gallery/Terraced-Port.jpg'],
+            ['Signature taste', 'Harbourside tea houses', 'images/nations/hover-gallery/Harbourside-Tea-Houses.jpg'],
             ['Travel pace', 'Measured, mercantile'],
         ],
         'story' => [
@@ -155,9 +157,9 @@ return [
         'tagline' => 'Islands that keep their own weather, and their own time.',
         'lede' => 'A scattered archipelago under frequently dramatic skies, Inazuma moves at the pace of the tide and the ferry schedule, and asks travellers to do the same.',
         'facts' => [
-            ['Best season', 'Early summer, clearest straits'],
-            ['Known for', 'Island-hopping ferries & storm-lit skies'],
-            ['Signature taste', 'Coastal rice & seaweed fare'],
+            ['Best season', 'Early summer, clearest straits', 'images/nations/hover-gallery/Night-View-Inazuma.jpg'],
+            ['Known for', 'Island-hopping ferries & storm-lit skies', 'images/nations/hover-gallery/Island-Hopping-Ferries.jpg'],
+            ['Signature taste', 'Coastal rice & seaweed fare', 'images/nations/hover-gallery/Wakatakeni.jpg'],
             ['Travel pace', 'Ceremonial, tide-timed'],
         ],
         'story' => [
@@ -220,9 +222,9 @@ return [
         'tagline' => 'A library that grew a rainforest, and a desert that remembers everything.',
         'lede' => 'Sumeru holds two landscapes at once — a dense rainforest and a wide desert — joined by a culture that treats curiosity as a form of hospitality.',
         'facts' => [
-            ['Best season', 'Dry season, cooler desert nights'],
-            ['Known for', 'Rainforest canopy & sandstone ruins'],
-            ['Signature taste', 'Spiced caravan cuisine'],
+            ['Best season', 'Dry season, cooler desert nights', 'images/nations/hover-gallery/Sumeru-Night.jpg'],
+            ['Known for', 'Rainforest canopy & sandstone ruins', 'images/nations/hover-gallery/Sandstone-Ruins.jpg'],
+            ['Signature taste', 'Spiced caravan cuisine', 'images/nations/hover-gallery/Tandoori-Chicken.jpg'],
             ['Travel pace', 'Curious, unhurried'],
         ],
         'story' => [
@@ -290,9 +292,9 @@ return [
         'tagline' => 'A city that settles its arguments by the light of chandeliers.',
         'lede' => 'Fontaine is a canal city built around the theatre of justice and the theatre of the stage in roughly equal measure, with waterways doing double duty as streets.',
         'facts' => [
-            ['Best season', 'Year-round; opera peaks in winter'],
-            ['Known for', 'Canal courts & underwater promenades'],
-            ['Signature taste', 'Courthouse-district patisserie'],
+            ['Best season', 'Year-round; opera peaks in winter', 1],
+            ['Known for', 'Canal courts & underwater promenades', 2],
+            ['Signature taste', 'Courthouse-district patisserie', 'images/nations/hover-gallery/Fruity-Trio.jpg'],
             ['Travel pace', 'Theatrical, precise'],
         ],
         'story' => [
@@ -360,9 +362,9 @@ return [
         'tagline' => 'A nation that measures a life by how it\'s celebrated.',
         'lede' => 'Natlan is built in fire-lit terraces and measures its calendar in festivals, with drum processions that turn nearly any evening into an event worth staying up for.',
         'facts' => [
-            ['Best season', 'Festival season, warm dry evenings'],
-            ['Known for', 'Terraced plazas & drum processions'],
-            ['Signature taste', 'Smoke-grilled festival fare'],
+            ['Best season', 'Festival season, warm dry evenings', 'images/nations/hover-gallery/Festival-Season-Natlan.jpg'],
+            ['Known for', 'Terraced plazas & drum processions', 'images/nations/hover-gallery/Terraced-Plazas.jpg'],
+            ['Signature taste', 'Smoke-grilled festival fare', 'images/nations/hover-gallery/Tatacos.jpg'],
             ['Travel pace', 'Warm, communal, loud'],
         ],
         'story' => [
@@ -429,9 +431,9 @@ return [
         'tagline' => 'The quiet at the edge of the map.',
         'lede' => 'Snezhnaya is the coldest and least-visited of the seven nations, a frost-built country of aurora-lit tundra where the pace of travel slows to match the season.',
         'facts' => [
-            ['Best season', 'Deep winter, for aurora visibility'],
-            ['Known for', 'Frost palaces & aurora-lit tundra'],
-            ['Signature taste', 'Fermented preserves & warm spiced drinks'],
+            ['Best season', 'Deep winter, for aurora visibility', 'images/nations/hover-gallery/Aurora-Visibility.jpg'],
+            ['Known for', 'Frost palaces & aurora-lit tundra', 4],
+            ['Signature taste', 'Fermented preserves & warm spiced drinks', 'images/nations/hover-gallery/Zharkoye.jpg'],
             ['Travel pace', 'Reserved, slow-paced'],
         ],
         'story' => [

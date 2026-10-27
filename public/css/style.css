@@ -90,7 +90,6 @@ p{ margin:0 0 1.1em; }
 .section{ padding-block:72px; }
 .section--alt{ background:var(--cream); }
 .section--tight{ padding-block:56px; }
-.section--after-search{ padding-top:112px; }
 
 .section-head-row{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:30px; }
 .section-head-row h2{ margin:0; }
@@ -180,26 +179,23 @@ p{ margin:0 0 1.1em; }
     linear-gradient(90deg, rgba(14,18,28,.8) 0%, rgba(14,18,28,.5) 45%, rgba(14,18,28,.08) 85%),
     linear-gradient(180deg, rgba(14,18,28,0) 55%, rgba(14,18,28,.5) 100%);
 }
-.hero-landing-inner{ padding-block:96px 0; }
+.hero-landing-inner{ padding-block:96px 56px; }
 .hero-kicker{ margin:0 0 14px; font-size:.95rem; font-weight:500; color:rgba(255,255,255,.8); }
 .hero-landing h1{ color:#fff; font-size:clamp(2.6rem,6vw,4.4rem); margin-bottom:.3em; max-width:12ch; }
 .hero-sub{ max-width:36ch; color:rgba(255,255,255,.85); font-size:1.05rem; margin-bottom:34px; }
 
-.search-card{
-  position:relative; z-index:2; margin-bottom:-52px; max-width:900px;
-  display:grid; grid-template-columns:1.2fr 1fr .8fr auto; align-items:center;
-  background:var(--surface); color:var(--ink); border-radius:20px; padding:14px 14px 14px 10px;
-  box-shadow:var(--shadow-lg);
+/* hero buttons + stats line */
+.hero-actions{ display:flex; flex-wrap:wrap; gap:14px; }
+.btn-ghost-light{ background:rgba(255,255,255,.08); color:#fff; border-color:rgba(255,255,255,.55); backdrop-filter:blur(4px); }
+.btn-ghost-light:hover{ background:rgba(255,255,255,.16); border-color:var(--gold); transform:translateY(-1px); }
+.hero-stats{
+  list-style:none; display:flex; flex-wrap:wrap; gap:18px 0; max-width:640px;
+  margin:48px 0 0; padding:22px 0 0; border-top:1px solid rgba(255,255,255,.22);
 }
-.search-field{ display:flex; align-items:center; gap:12px; padding:6px 18px; border-right:1px solid var(--line); min-width:0; }
-.search-field > div{ min-width:0; flex:1; }
-.search-field label{ display:block; font-weight:700; font-size:.82rem; margin-bottom:1px; }
-.search-field select,.search-field input{
-  width:100%; border:0; background:transparent; padding:2px 0; outline:none;
-  font:500 .86rem var(--font-body); color:var(--ink-soft);
-}
-.search-field select:focus-visible,.search-field input:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
-.search-card .btn{ margin-left:14px; }
+.hero-stats li{ padding-right:32px; margin-right:32px; border-right:1px solid rgba(255,255,255,.22); }
+.hero-stats li:last-child{ padding-right:0; margin-right:0; border-right:0; }
+.hero-stats strong{ display:block; font-family:var(--font-display); font-size:1.9rem; line-height:1.1; color:var(--gold); font-variant-numeric:tabular-nums; }
+.hero-stats span{ font-size:.84rem; color:rgba(255,255,255,.78); }
 
 /* ---------- nation tiles (home) ---------- */
 .tile-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
@@ -314,6 +310,39 @@ a.tile::after{ content:''; position:absolute; inset:0; background:linear-gradien
 .fact:last-child{ border-right:0; }
 .fact-label{ display:block; font-size:.74rem; color:var(--ink-soft); }
 .fact-value{ display:block; font-weight:600; font-size:.92rem; line-height:1.35; }
+
+/* ---------- hover photo popup (reusable) ----------
+   Put class "has-peek" + tabindex="0" on any element and @include('partials.peek', ['src' => ...]) inside it.
+   Shows on hover, keyboard focus, or tap (touch). Placement: default above-left;
+   add 'below' and/or 'right' via the partial's $pos, e.g. ['pos' => 'below right'].
+   Size: override --peek-w on the host, e.g. style="--peek-w:340px". */
+.has-peek{ position:relative; }
+.has-peek:focus-visible{ outline:2px solid var(--accent); outline-offset:-2px; border-radius:var(--radius-sm); }
+.peek{
+  position:absolute; left:0; bottom:100%; z-index:20; width:min(var(--peek-w,280px), calc(100vw - 36px));
+  margin-bottom:10px; padding:5px; background:var(--surface); border-radius:var(--radius-sm); box-shadow:var(--shadow-lg);
+  opacity:0; visibility:hidden; transform:translateY(6px); pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+}
+.peek::after{
+  content:''; position:absolute; left:28px; bottom:-6px; width:12px; height:12px;
+  background:var(--surface); transform:rotate(45deg); border-radius:2px;
+}
+.peek img{ position:relative; z-index:1; display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:6px; background:var(--cream); }
+.peek--below{ bottom:auto; top:100%; margin-bottom:0; margin-top:10px; transform:translateY(-6px); }
+.peek--below::after{ bottom:auto; top:-6px; }
+.peek--right{ left:auto; right:0; }
+.peek--right::after{ left:auto; right:28px; }
+@media (hover:hover){
+  .has-peek:hover > .peek,
+  .has-peek:focus-visible > .peek{ opacity:1; visibility:visible; transform:none; transition-delay:0s; }
+}
+@media (hover:none){
+  .has-peek:focus > .peek{ opacity:1; visibility:visible; transform:none; transition-delay:0s; }
+}
+/* facts band: line the popup up with each fact's text */
+.fact .peek{ left:24px; }
+.fact:first-child .peek{ left:0; }
 
 /* ---------- why visit ---------- */
 .highlights{ display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:start; }
@@ -476,9 +505,6 @@ body.lightbox-open{ overflow:hidden; }
 @media (max-width:1024px){
   .trip-grid{ grid-template-columns:repeat(2,1fr); }
   .tile-grid{ grid-template-columns:repeat(2,1fr); }
-  .search-card{ grid-template-columns:1fr 1fr; row-gap:6px; }
-  .search-field:nth-child(2){ border-right:0; }
-  .search-card .btn{ grid-column:1 / -1; margin:10px 4px 0; }
 }
 
 @media (max-width:900px){
@@ -540,19 +566,24 @@ body.lightbox-open{ overflow:hidden; }
   .fact:first-child{ padding-left:20px; }
   .fact:nth-child(2){ border-right:0; }
   .fact:nth-child(n+3){ border-bottom:0; }
+  .fact:nth-child(odd) .peek{ left:12px; }
+  .fact:nth-child(even) .peek{ left:auto; right:12px; }
+  .fact:nth-child(even) .peek::after{ left:auto; right:28px; }
   .hero-loc{ display:none; }
 }
 
 @media (max-width:640px){
   .container{ padding-inline:18px; }
   .hero-landing{ min-height:0; }
-  .hero-landing-inner{ padding-block:64px 0; }
+  .hero-landing-inner{ padding-block:64px 40px; }
+  .hero-actions .btn{ flex:1 1 100%; }
+  .hero-stats{ margin-top:36px; display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+  .hero-stats li{ padding:0 10px; margin:0; }
+  .hero-stats li:first-child{ padding-left:0; }
+  .hero-stats strong{ font-size:1.5rem; }
+  .hero-stats span{ font-size:.78rem; }
   .hero-nation{ min-height:0; }
   .hero-nation-inner{ padding-block:64px 56px; }
-  .search-card{ grid-template-columns:1fr; padding:10px; margin-bottom:-40px; }
-  .search-field{ border-right:0; border-bottom:1px solid var(--line); padding:12px 10px; }
-  .search-card .btn{ margin:12px 2px 2px; }
-  .section--after-search{ padding-top:88px; }
   .tile-grid,.trip-grid{ grid-template-columns:1fr; }
   .tile{ aspect-ratio:16/9; }
   .feature-row{ grid-template-columns:repeat(2,1fr); }
