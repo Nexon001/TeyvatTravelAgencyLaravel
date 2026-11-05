@@ -247,29 +247,6 @@
             <button type="submit" class="btn btn-gold">Send Message <svg class="icon"><use href="#i-arrow-right"/></svg></button>
         </form>
     </div>
-
-    <style>
-        .contact { display: grid; gap: 2.5rem; grid-template-columns: 1fr; align-items: start; }
-        @media (min-width: 860px) { .contact { grid-template-columns: 5fr 7fr; gap: 4rem; } }
-        .contact-form { display: grid; gap: 1.1rem; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 1.75rem; }
-        .contact-row { display: grid; gap: 1.1rem; grid-template-columns: 1fr; }
-        @media (min-width: 560px) { .contact-row { grid-template-columns: 1fr 1fr; } }
-        .contact-field { display: grid; gap: .4rem; }
-        .contact-field label { font-weight: 600; font-size: .9rem; color: var(--navy); }
-        .contact-field input,
-        .contact-field select,
-        .contact-field textarea { width: 100%; font: inherit; color: inherit; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: .7rem .85rem; }
-        .contact-field input:focus,
-        .contact-field select:focus,
-        .contact-field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
-        .contact-field textarea { resize: vertical; min-height: 8rem; }
-        .contact-error { color: #b3261e; font-size: .82rem; }
-        .contact-alert { border-radius: 10px; padding: .75rem 1rem; font-size: .92rem; }
-        .contact-alert--ok { background: #e7f4ea; color: #1e5b2d; }
-        .contact-alert--err { background: #fdeceb; color: #b3261e; }
-        .contact-form .btn { justify-self: start; }
-        .contact-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-    </style>
 </section>
 
 {{-- CTA --}}
