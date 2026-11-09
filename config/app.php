@@ -2,6 +2,8 @@
 
 return [
 
+    'desk_email' => env('DESK_EMAIL', 'desk@teyvattravel.co'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

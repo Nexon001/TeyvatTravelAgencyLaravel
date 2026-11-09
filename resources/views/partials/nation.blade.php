@@ -60,8 +60,8 @@
                 <strong>Need a custom itinerary?</strong>
                 <p>We can tailor the trip to your preferences, group size, and schedule.</p>
             </div>
-            {{-- Leads to the homepage contact form with this nation pre-selected --}}
-            <a class="btn btn-outline btn-sm" href="{{ route('home', ['nation' => $slug]) }}#contact">Contact Us <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+            {{-- Opens an email to the desk with this nation in the subject line --}}
+            <a class="btn btn-outline btn-sm" href="mailto:{{ config('app.desk_email') }}?subject={{ rawurlencode('Custom itinerary - '.$n['name']) }}">Contact Us <svg class="icon"><use href="#i-arrow-right"/></svg></a>
         </div>
     </div>
 </section>
