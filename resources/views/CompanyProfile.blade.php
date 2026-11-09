@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
-@php $nations = include resource_path('data/nations.php'); @endphp
+@php
+    $nations = include resource_path('data/nations.php');
+    $faqs    = include resource_path('data/faqs.php');
+@endphp
 
 @section('title', 'Your Journey Across Teyvat')
 @section('description', 'Teyvat Travel Services crafts handcrafted itineraries across all seven nations of Teyvat — Mondstadt, Liyue, Inazuma, Sumeru, Fontaine, Natlan and Snezhnaya.')
@@ -59,7 +62,7 @@
             <div class="tile tile--cta">
                 <h3>Can't decide?</h3>
                 <p>Tell the desk what you're after and we'll draft a route.</p>
-                <a class="btn btn-gold btn-sm" href="#contact">Contact Us</a>
+                <a class="btn btn-gold btn-sm" href="mailto:{{ config('app.desk_email') }}?subject=Help%20me%20choose%20a%20route">Email the Desk</a>
             </div>
         </div>
     </div>
@@ -188,64 +191,47 @@
     </div>
 </section>
 
-{{-- CONTACT --}}
-<section class="section" id="contact">
-    <div class="container contact">
-        <div class="contact-intro">
-            <span class="eyebrow">Contact</span>
-            <h2>Tell the desk where you want to go</h2>
-            <p>Questions about a route, a custom multi-nation journey, or a booking? Send a message and the Director's desk will reply, usually within 3–5 business days.</p>
-        </div>
+{{-- FAQ --}}
+<section class="section" id="faq">
+    <div class="container faq">
+        <header class="faq-head">
+            <span class="eyebrow">FAQ</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>Quick answers about booking, what's included and how we plan your route. Can't find yours? The Director's desk is a short email away.</p>
+        </header>
 
-        <form class="contact-form" method="POST" action="{{ url('/contact') }}" novalidate>
-            @csrf
+        {{-- Jump bar: one link per category, generated from resources/data/faqs.php --}}
+        <nav class="faq-jump" aria-label="FAQ categories">
+            @foreach ($faqs as $slug => $group)
+                <a href="#faq-{{ $slug }}"><span class="faq-jump-dot" aria-hidden="true"><svg class="icon"><use href="#i-chevron"/></svg></span>{{ $group['title'] }}</a>
+            @endforeach
+        </nav>
 
-            @if (session('status'))
-                <div class="contact-alert contact-alert--ok" role="status">{{ session('status') }}</div>
-            @endif
-            @if ($errors->any())
-                <div class="contact-alert contact-alert--err" role="alert">Please check the highlighted fields and try again.</div>
-            @endif
-
-            {{-- Honeypot: real visitors never see or fill this --}}
-            <div class="contact-hp" aria-hidden="true">
-                <label for="contact-website">Leave this field empty</label>
-                <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">
-            </div>
-
-            <div class="contact-row">
-                <div class="contact-field">
-                    <label for="contact-name">Name <span aria-hidden="true">*</span></label>
-                    <input type="text" id="contact-name" name="name" value="{{ old('name') }}" autocomplete="name" required>
-                    @error('name') <small class="contact-error">{{ $message }}</small> @enderror
-                </div>
-                <div class="contact-field">
-                    <label for="contact-email">Email <span aria-hidden="true">*</span></label>
-                    <input type="email" id="contact-email" name="email" value="{{ old('email') }}" autocomplete="email" required>
-                    @error('email') <small class="contact-error">{{ $message }}</small> @enderror
-                </div>
-            </div>
-
-            <div class="contact-field">
-                <label for="contact-nation">Nation of interest</label>
-                <select id="contact-nation" name="nation">
-                    <option value="">Not sure yet</option>
-                    @foreach ($nations as $slug => $n)
-                        <option value="{{ $slug }}" @selected(old('nation', request('nation')) === $slug)>{{ $n['name'] }}</option>
+        @foreach ($faqs as $slug => $group)
+            <div class="faq-group" id="faq-{{ $slug }}">
+                <h3 class="faq-group-title">{{ $group['title'] }}</h3>
+                <div class="faq-list">
+                    @foreach ($group['items'] as $i => [$question, $answer])
+                        <details class="faq-item" id="faq-{{ $slug }}-{{ $i + 1 }}">
+                            <summary>
+                                <span class="faq-q">{{ $question }}</span>
+                                <span class="faq-plus" aria-hidden="true"></span>
+                            </summary>
+                            <div class="faq-answer"><p>{{ $answer }}</p></div>
+                        </details>
                     @endforeach
-                    <option value="multi" @selected(old('nation', request('nation')) === 'multi')>Multi-nation journey</option>
-                </select>
-                @error('nation') <small class="contact-error">{{ $message }}</small> @enderror
+                </div>
             </div>
+        @endforeach
 
-            <div class="contact-field">
-                <label for="contact-message">Message <span aria-hidden="true">*</span></label>
-                <textarea id="contact-message" name="message" rows="5" required>{{ old('message') }}</textarea>
-                @error('message') <small class="contact-error">{{ $message }}</small> @enderror
+        <div class="custom-strip faq-more">
+            <span class="icon-badge"><svg class="icon"><use href="#i-mail"/></svg></span>
+            <div>
+                <strong>Still have a question?</strong>
+                <p>Email the Director's desk and we'll reply, usually within 3–5 business days.</p>
             </div>
-
-            <button type="submit" class="btn btn-gold">Send Message <svg class="icon"><use href="#i-arrow-right"/></svg></button>
-        </form>
+            <a class="btn btn-outline btn-sm" href="mailto:{{ config('app.desk_email') }}">{{ config('app.desk_email') }} <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+        </div>
     </div>
 </section>
 
