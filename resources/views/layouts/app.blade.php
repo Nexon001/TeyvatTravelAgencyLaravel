@@ -44,6 +44,7 @@
         <li><a href="{{ route('home') }}#itineraries">Itineraries</a></li>
         <li><a href="{{ route('home') }}#about">About Us</a></li>
         <li><a href="{{ route('home') }}#faq">FAQ</a></li>
+        <li><a href="{{ route('home') }}#contact">Contact</a></li>
       </ul>
       <div class="nav-actions">
         {{-- Backend hooks: these buttons fire a "teyvat:action" event (see script at the bottom). --}}
@@ -80,6 +81,7 @@
         <li><a href="{{ route('home') }}#director">About the Director</a></li>
         <li><a href="{{ route('home') }}#itineraries">Featured itineraries</a></li>
         <li><a href="{{ route('home') }}#faq">FAQs</a></li>
+        <li><a href="{{ route('home') }}#contact">Contact us</a></li>
         <li><a href="mailto:{{ config('app.desk_email') }}">{{ config('app.desk_email') }}</a></li>
       </ul>
     </div>
