@@ -4,13 +4,40 @@
   window.Teyvat = window.Teyvat || {};
 
   var el = document.getElementById('toast');
+  var authEl = document.getElementById('auth-toast');
+  var signupEl = document.getElementById('signup-toast');
   var timer;
+  var activeEl;
 
   window.Teyvat.toast = function (message) {
-    if (!el) { console.warn('[toast.js] #toast element not found'); return; }
-    el.textContent = message;
-    el.classList.add('is-visible');
+    var dialog = document.getElementById('login-dialog');
+    var signupView = document.getElementById('signup-view');
+    var dialogToast = signupView && !signupView.hidden ? signupEl : authEl;
+    var target = dialog && dialog.open && dialogToast ? dialogToast : el;
+    if (!target) { console.warn('[toast.js] #toast element not found'); return; }
+
+    if (activeEl && activeEl !== target) {
+      activeEl.classList.remove('is-visible');
+    }
+
+    activeEl = target;
+    activeEl.textContent = message;
+    activeEl.classList.add('is-visible');
     clearTimeout(timer);
-    timer = setTimeout(function () { el.classList.remove('is-visible'); }, 2800);
+    timer = setTimeout(function () {
+      activeEl.classList.remove('is-visible');
+      activeEl = null;
+    }, 2800);
+  };
+
+  var dialog = document.getElementById('login-dialog');
+  if (dialog && (authEl || signupEl)) {
+    dialog.addEventListener('close', function () {
+      if (activeEl !== authEl && activeEl !== signupEl) return;
+
+      clearTimeout(timer);
+      activeEl.classList.remove('is-visible');
+      activeEl = null;
+    });
   };
 })();
