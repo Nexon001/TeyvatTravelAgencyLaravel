@@ -123,14 +123,6 @@
         <button class="login-submit" type="submit">Login</button>
         <p class="login-feedback" id="login-feedback" role="status" aria-live="polite" hidden></p>
       </form>
-      <div class="login-divider"><span>Or sign in using</span></div>
-      <div class="login-socials" aria-label="Social sign-in options">
-        <button class="login-social login-social--facebook" type="button" aria-label="Continue with Facebook" data-action="social-login" data-provider="Facebook">f</button>
-        <button class="login-social login-social--twitter" type="button" aria-label="Continue with Twitter" data-action="social-login" data-provider="Twitter">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 5.9a8 8 0 0 1-2.36.65 4.12 4.12 0 0 0 1.8-2.27 8.22 8.22 0 0 1-2.6.99 4.1 4.1 0 0 0-7 3.74 11.64 11.64 0 0 1-8.45-4.28 4.1 4.1 0 0 0 1.27 5.47 4.06 4.06 0 0 1-1.86-.51v.05a4.1 4.1 0 0 0 3.29 4.02 4.1 4.1 0 0 1-1.85.07 4.11 4.11 0 0 0 3.83 2.85A8.24 8.24 0 0 1 2 18.38a11.62 11.62 0 0 0 6.29 1.84c7.55 0 11.68-6.25 11.68-11.68l-.01-.53A8.34 8.34 0 0 0 22 5.9Z"/></svg>
-        </button>
-        <button class="login-social login-social--google" type="button" aria-label="Continue with Google" data-action="social-login" data-provider="Google">G</button>
-      </div>
       <p class="login-signup">Don't have an account? <button class="login-link" type="button" data-auth-switch="signup">Sign up</button></p>
       <div class="toast toast--dialog" id="auth-toast" role="status" aria-live="polite"></div>
     </section>
