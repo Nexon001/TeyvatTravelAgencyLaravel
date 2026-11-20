@@ -18,7 +18,6 @@
     'book-now': 'Online booking is coming soon.',
     'search': 'Site search is coming soon.',
     'forgot-password': 'Password recovery is coming soon.',
-    'social-login': 'Social sign-in is coming soon.',
     'signup': 'Sign-up is coming soon.'
   };
 
