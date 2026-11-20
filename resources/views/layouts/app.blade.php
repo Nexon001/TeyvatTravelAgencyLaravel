@@ -12,9 +12,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>@yield('title') | Teyvat Travel Services</title>
 <meta name="description" content="@yield('description')">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+@stack('head')
 </head>
-<body class="@yield('body-class')">
+<body class="@yield('body-class')" data-booking-url="{{ route('booking') }}">
 @include('partials.sprite')
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -47,9 +50,19 @@
         <li><a href="{{ route('home') }}#contact">Contact</a></li>
       </ul>
       <div class="nav-actions">
-        {{-- Backend hooks: these buttons fire a "teyvat:action" event (see script at the bottom). --}}
-        <button type="button" class="btn btn-outline btn-pill btn-sm" data-action="login">Log in</button>
-        <button type="button" class="btn btn-outline btn-pill btn-sm" data-action="signup">Sign up</button>
+        @auth
+          @if (auth()->user()->role === 'admin')
+            <a class="btn btn-outline btn-pill btn-sm" href="{{ route('admin.dashboard') }}">Dashboard</a>
+          @endif
+          <form method="POST" action="{{ route('logout') }}" class="nav-logout">
+            @csrf
+            <button type="submit" class="btn btn-outline btn-pill btn-sm">Log out</button>
+          </form>
+        @else
+          {{-- Opens the login pop-up (auth.js). The pop-up has a "Sign up" switch inside. --}}
+          <button type="button" class="btn btn-outline btn-pill btn-sm" data-action="login">Log in / Sign up</button>
+        @endauth
+        {{-- Backend hook: this button fires a "teyvat:action" event (see script at the bottom). --}}
         <button type="button" class="btn btn-gold btn-pill btn-sm" data-action="book-now">Book Now</button>
       </div>
     </nav>
@@ -94,7 +107,12 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<dialog class="login-dialog" id="login-dialog" aria-labelledby="auth-title" aria-describedby="auth-description">
+@guest
+{{-- data-auth-open / data-auth-message: set when a visitor was sent here to log in (e.g. an admin page, or an idle logout). --}}
+<dialog class="login-dialog" id="login-dialog" aria-labelledby="auth-title" aria-describedby="auth-description"
+        data-csrf-url="{{ route('booking.csrf') }}"
+        data-auth-open="{{ request()->query('auth') }}"
+        data-auth-message="{{ session('status') }}">
   <div class="login-dialog__content">
     <button class="login-dialog__close" id="auth-close" type="button" aria-label="Close login form" data-close-login>
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -103,11 +121,11 @@
     <p class="login-dialog__intro" id="auth-description">Welcome back, traveler. Sign in to continue.</p>
 
     <section class="auth-view" id="login-view">
-      <form class="login-form" id="login-form">
-        <label class="login-field" for="login-username">Username</label>
+      <form class="login-form" id="login-form" method="POST" action="{{ route('login.store') }}">
+        <label class="login-field" for="login-email">Email</label>
         <div class="login-input-wrap">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-4 2.8-6 7-6s7 2 7 6"/></svg>
-          <input id="login-username" name="username" type="text" autocomplete="username" placeholder="Type your username" data-auth-focus required>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>
+          <input id="login-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" data-auth-focus required>
         </div>
 
         <label class="login-field" for="login-password">Password</label>
@@ -136,7 +154,7 @@
     </section>
 
     <section class="auth-view" id="signup-view" hidden>
-      <form class="login-form" id="signup-form">
+      <form class="login-form" id="signup-form" method="POST" action="{{ route('register.store') }}">
         <label class="login-field" for="signup-name">Full name</label>
         <div class="login-input-wrap">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-4 2.8-6 7-6s7 2 7 6"/></svg>
@@ -147,12 +165,6 @@
         <div class="login-input-wrap">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>
           <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
-        </div>
-
-        <label class="login-field" for="signup-username">Username</label>
-        <div class="login-input-wrap">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-4 2.8-6 7-6s7 2 7 6"/></svg>
-          <input id="signup-username" name="username" type="text" autocomplete="username" placeholder="Choose a username" required>
         </div>
 
         <label class="login-field" for="signup-password">Password</label>
@@ -167,6 +179,12 @@
           <input id="signup-password-confirmation" name="password_confirmation" type="password" autocomplete="new-password" placeholder="Confirm your password" minlength="8" required>
         </div>
 
+        {{-- Honeypot: hidden from people; a bot that fills it in is rejected. --}}
+        <div class="login-hp" aria-hidden="true">
+          <label for="signup-hp">Leave this field empty</label>
+          <input id="signup-hp" name="hp_website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
         <button class="login-submit" type="submit">Create account</button>
         <p class="login-feedback" id="signup-feedback" role="status" aria-live="polite" hidden></p>
       </form>
@@ -175,9 +193,10 @@
     </section>
   </div>
 </dialog>
+@endguest
 
 {{-- Scripts: one file per feature in public/js. toast.js must load first (others call Teyvat.toast). --}}
-@foreach (['toast', 'nav', 'actions', 'auth', 'itineraries', 'hero', 'lightbox', 'faq'] as $script)
+@foreach (['toast', 'nav', 'actions', 'auth', 'itineraries', 'hero', 'lightbox', 'faq', 'booking-link'] as $script)
 <script src="{{ $jsUrl($script) }}" defer></script>
 @endforeach
 @yield('scripts')
