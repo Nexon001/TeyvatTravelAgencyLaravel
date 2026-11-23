@@ -1,12 +1,11 @@
-/* ==========================================================================
-   Teyvat Travel Services — stylesheet
-   Warm cream surfaces, deep navy chrome, gold calls-to-action. Each nation
-   page keeps its own accent colour (icons, labels, hero glow) while the
-   buttons stay gold, as in the design mockups.
-   ========================================================================== */
+/* Pangunahing estilo ng site: cream ang mga surface, navy ang navigation,
+   at gold ang mga pangunahing button. May sariling accent color ang bawat
+   nation page para sa mga icon, label, at dekorasyon. */
 
+/* Naglo-load ng display font para sa mga heading at body font para sa teksto. */
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap');
 
+/* Mga design token: dito nagmumula ang mga kulay, font, sukat, at shadow na ginagamit sa buong site. */
 :root{
   --bg:#faf7f1;
   --surface:#ffffff;
@@ -19,7 +18,7 @@
   --gold-deep:#b9852b;
   --line:rgba(28,33,48,.1);
 
-  /* per-page accent (overridden by body.chapter-*) */
+  /* Default accent; pinapalitan ito depende sa class ng body ng kasalukuyang page. */
   --accent:#d9a548;
   --accent-deep:#a87a22;
   --accent-soft:rgba(217,165,72,.16);
@@ -35,6 +34,7 @@
   --header-h:68px;
 }
 
+/* Accent colors ng bawat nation page; nagbabago ang mga elementong gumagamit ng --accent. */
 body.chapter-mondstadt{ --accent:#22a559; --accent-deep:#167a40; --accent-soft:rgba(34,165,89,.14); }
 body.chapter-liyue{     --accent:#e0912b; --accent-deep:#a66a14; --accent-soft:rgba(224,145,43,.16); }
 body.chapter-inazuma{   --accent:#8b5cf6; --accent-deep:#6633cc; --accent-soft:rgba(139,92,246,.14); }
@@ -44,20 +44,26 @@ body.chapter-natlan{    --accent:#f1573a; --accent-deep:#c43d22; --accent-soft:r
 body.chapter-snezhnaya{ --accent:#38bdf8; --accent-deep:#1d8fcb; --accent-soft:rgba(56,189,248,.16); }
 body.chapter-profile{   --accent:#d9a548; --accent-deep:#a87a22; --accent-soft:rgba(217,165,72,.16); }
 
-/* ---------- base ---------- */
+/* ---------- Pangkalahatang base style ---------- */
+/* Ginagawang predictable ang lapad ng lahat ng element kasama ang pseudo-element. */
 *,*::before,*::after{ box-sizing:border-box; }
+/* Maayos na scroll papunta sa anchor at pangunahing default ng body. */
 html{ scroll-behavior:smooth; }
 body{
   margin:0; background:var(--bg); color:var(--ink);
   font-family:var(--font-body); font-size:16px; line-height:1.6;
   -webkit-font-smoothing:antialiased;
 }
+/* Pinipigilan ang larawan at SVG na lumampas sa lapad ng kanilang container. */
 img,svg{ max-width:100%; }
 img{ display:block; }
 a{ color:inherit; }
+/* Kitang-kita ang focus ring kapag nagna-navigate gamit ang keyboard. */
 :focus-visible{ outline:3px solid var(--accent); outline-offset:2px; }
+/* Iniiwasang matakpan ng sticky header ang heading na tinutumbok ng anchor. */
 section[id]{ scroll-margin-top:calc(var(--header-h) + 12px); }
 
+/* Pare-parehong display font at spacing para sa mga heading. */
 h1,h2,h3,h4{
   font-family:var(--font-display); font-weight:600; color:var(--ink);
   line-height:1.15; letter-spacing:-.01em; margin:0 0 .5em;
@@ -66,12 +72,15 @@ h2{ font-size:clamp(1.7rem,3.4vw,2.35rem); }
 h3{ font-size:1.12rem; }
 p{ margin:0 0 1.1em; }
 
+/* Centered na content container na may maximum width at side padding. */
 .container{ width:100%; max-width:1180px; margin-inline:auto; padding-inline:24px; }
 
+/* Nakatagong skip link na lumilitaw kapag na-focus para sa keyboard accessibility. */
 .skip-link{ position:absolute; left:-999px; top:auto; background:var(--navy); color:#fff; padding:10px 16px; border-radius:var(--radius-sm); z-index:200; }
 .skip-link:focus{ left:16px; top:16px; }
 
-/* ---------- icons ---------- */
+/* ---------- Mga icon ---------- */
+/* Pare-parehong sukat at stroke ng SVG icons; ang badge ang bilog na background ng icon. */
 .icon{ width:1.2em; height:1.2em; flex:none; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
 .icon-badge{
   display:inline-flex; align-items:center; justify-content:center; flex:none;
@@ -80,13 +89,15 @@ p{ margin:0 0 1.1em; }
 }
 .icon-badge .icon{ width:21px; height:21px; }
 
-/* ---------- eyebrow / section scaffolding ---------- */
+/* ---------- Maliliit na label at section layout ---------- */
+/* Eyebrow label na may accent line; ginagamit bago ang mga section heading. */
 .eyebrow{
   display:inline-flex; align-items:center; gap:10px; margin-bottom:14px;
   font:700 .72rem/1 var(--font-body); letter-spacing:.14em; text-transform:uppercase; color:var(--accent-deep);
 }
 .eyebrow::before{ content:''; width:28px; height:2px; border-radius:2px; background:var(--accent); }
 
+/* Default na pagitan at background variants para sa mga section. */
 .section{ padding-block:72px; }
 .section--alt{ background:var(--cream); }
 .section--tight{ padding-block:56px; }
@@ -95,7 +106,8 @@ p{ margin:0 0 1.1em; }
 .section-head-row h2{ margin:0; }
 .scroll-hint{ display:inline-flex; align-items:center; gap:6px; font-size:.82rem; font-weight:600; color:var(--ink-soft); }
 
-/* ---------- buttons ---------- */
+/* ---------- Mga button ---------- */
+/* Base button layout, kasunod ang gold, outline, pill, at sukat na variants. */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:8px;
   padding:12px 22px; border-radius:var(--radius-sm); border:1px solid transparent;
@@ -112,13 +124,15 @@ p{ margin:0 0 1.1em; }
 .btn-lg{ padding:16px 28px; font-size:.98rem; }
 .btn-block{ width:100%; }
 
-/* ---------- header / nav ---------- */
+/* ---------- Header at navigation ---------- */
+/* Sticky na dark header; ang blur at translucent background ay nagbibigay ng layered effect. */
 .site-header{
   position:sticky; top:0; z-index:100;
   background:rgba(22,27,39,.94);
   -webkit-backdrop-filter:saturate(160%) blur(12px); backdrop-filter:saturate(160%) blur(12px);
   border-bottom:1px solid rgba(255,255,255,.07);
 }
+/* Pagkakaayos ng brand, desktop links, dropdown, at mga action button sa navigation. */
 .nav-row{ display:flex; align-items:center; gap:24px; min-height:var(--header-h); }
 .brand{ display:flex; align-items:center; gap:12px; color:#fff; text-decoration:none; }
 .brand-mark{ width:36px; height:36px; flex:none; }
@@ -168,7 +182,8 @@ p{ margin:0 0 1.1em; }
 }
 .nav-icon-btn:hover{ background:rgba(255,255,255,.1); }
 
-/* ---------- landing hero (home) ---------- */
+/* ---------- Hero section ng home page ---------- */
+/* Larawang background at overlay para mabasa ang puting teksto sa ibabaw nito. */
 .hero-landing{
   position:relative; display:flex; align-items:flex-end; min-height:600px; color:#fff;
   background-size:cover; background-position:center; isolation:isolate;
@@ -179,12 +194,13 @@ p{ margin:0 0 1.1em; }
     linear-gradient(90deg, rgba(14,18,28,.8) 0%, rgba(14,18,28,.5) 45%, rgba(14,18,28,.08) 85%),
     linear-gradient(180deg, rgba(14,18,28,0) 55%, rgba(14,18,28,.5) 100%);
 }
+/* Spacing at typography ng pamagat at maikling pagpapakilala sa hero. */
 .hero-landing-inner{ padding-block:96px 56px; }
 .hero-kicker{ margin:0 0 14px; font-size:.95rem; font-weight:500; color:rgba(255,255,255,.8); }
 .hero-landing h1{ color:#fff; font-size:clamp(2.6rem,6vw,4.4rem); margin-bottom:.3em; max-width:12ch; }
 .hero-sub{ max-width:36ch; color:rgba(255,255,255,.85); font-size:1.05rem; margin-bottom:34px; }
 
-/* hero buttons + stats line */
+/* Mga pangunahing link at estadistika na ipinapakita sa ibaba ng hero text. */
 .hero-actions{ display:flex; flex-wrap:wrap; gap:14px; }
 .btn-ghost-light{ background:rgba(255,255,255,.08); color:#fff; border-color:rgba(255,255,255,.55); backdrop-filter:blur(4px); }
 .btn-ghost-light:hover{ background:rgba(255,255,255,.16); border-color:var(--gold); transform:translateY(-1px); }
@@ -197,7 +213,8 @@ p{ margin:0 0 1.1em; }
 .hero-stats strong{ display:block; font-family:var(--font-display); font-size:1.9rem; line-height:1.1; color:var(--gold); font-variant-numeric:tabular-nums; }
 .hero-stats span{ font-size:.84rem; color:rgba(255,255,255,.78); }
 
-/* ---------- nation tiles (home) ---------- */
+/* ---------- Nation cards sa home page ---------- */
+/* Grid ng mga destination card at hover effect para idiin na clickable ang mga ito. */
 .tile-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
 .tile{
   position:relative; display:block; aspect-ratio:6/5; border-radius:var(--radius); overflow:hidden;
@@ -216,6 +233,7 @@ a.tile::after{ content:''; position:absolute; inset:0; background:linear-gradien
   border:1px solid rgba(255,255,255,.6); background:rgba(255,255,255,.12);
 }
 .tile-arrow .icon{ width:15px; height:15px; }
+/* Huling card bilang custom CTA sa halip na larawan ng isang nation. */
 .tile--cta{
   display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:6px; padding:24px;
   background:radial-gradient(500px 220px at 100% 0%, rgba(217,165,72,.25), transparent 60%), var(--navy);
@@ -224,7 +242,8 @@ a.tile::after{ content:''; position:absolute; inset:0; background:linear-gradien
 .tile--cta h3{ color:#fff; font-size:1.3rem; margin:0; }
 .tile--cta p{ color:rgba(255,255,255,.75); font-size:.88rem; margin:0 0 12px; }
 
-/* ---------- itinerary cards ---------- */
+/* ---------- Mga itinerary card ---------- */
+/* Grid at pahalang na scroller: pinananatiling swipe-scrollable ang cards sa masikip na view. */
 .trip-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:start; }
 .trip-scroller{
   display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x proximity;
@@ -235,12 +254,14 @@ a.tile::after{ content:''; position:absolute; inset:0; background:linear-gradien
 .trip-scroller::-webkit-scrollbar-thumb{ background:rgba(217,165,72,.5); border-radius:999px; }
 .trip-scroller .trip-card{ flex:0 0 clamp(250px,78vw,290px); scroll-snap-align:start; }
 
+/* Card shell at larawan; aangat nang bahagya ang card kapag hino-hover. */
 .trip-card{
   display:flex; flex-direction:column; overflow:hidden;
   background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
   box-shadow:var(--shadow-md); transition:transform .2s ease, box-shadow .2s ease;
 }
 .trip-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+/* Mga label, detalye, presyo, at action link sa loob ng itinerary card. */
 .trip-media{ position:relative; aspect-ratio:16/10; background:var(--cream); }
 .trip-media a{ display:block; height:100%; }
 .trip-media img{ width:100%; height:100%; object-fit:cover; }
@@ -266,6 +287,7 @@ a.tile::after{ content:''; position:absolute; inset:0; background:linear-gradien
 .detail-list li{ display:flex; align-items:flex-start; gap:10px; font-size:.88rem; line-height:1.45; }
 .detail-list .icon{ margin-top:.18em; color:var(--accent-deep); }
 
+/* Dropdown ng sorting na may custom arrow para tumugma sa visual style ng site. */
 .sort{ display:flex; align-items:center; gap:10px; font-size:.85rem; color:var(--ink-soft); }
 .sort select{
   appearance:none; -webkit-appearance:none; cursor:pointer;
@@ -274,7 +296,8 @@ a.tile::after{ content:''; position:absolute; inset:0; background:linear-gradien
   background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231c2130' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center/16px;
 }
 
-/* ---------- nation hero ---------- */
+/* ---------- Hero section ng nation page ---------- */
+/* Background overlay na gumagamit ng accent color ng nation para sa sariling identidad ng page. */
 .hero-nation{
   position:relative; display:flex; align-items:center; min-height:560px; color:#fff;
   background-size:cover; background-position:center; isolation:isolate;
@@ -302,7 +325,8 @@ a.tile::after{ content:''; position:absolute; inset:0; background:linear-gradien
 }
 .hero-loc::before{ content:''; width:56px; height:1px; background:rgba(255,255,255,.5); }
 
-/* ---------- facts ---------- */
+/* ---------- Mabilisang facts tungkol sa destination ---------- */
+/* Pantay-pantay na facts row; nagiging multi-row ito sa responsive layout sa ibaba. */
 .facts-band{ background:var(--surface); border-bottom:1px solid var(--line); }
 .facts{ display:grid; grid-template-columns:repeat(4,1fr); list-style:none; margin:0; padding:0; }
 .fact{ display:flex; align-items:center; gap:14px; padding:22px 24px; border-right:1px solid var(--line); }
@@ -311,11 +335,12 @@ a.tile::after{ content:''; position:absolute; inset:0; background:linear-gradien
 .fact-label{ display:block; font-size:.74rem; color:var(--ink-soft); }
 .fact-value{ display:block; font-weight:600; font-size:.92rem; line-height:1.35; }
 
-/* ---------- hover photo popup (reusable) ----------
-   Put class "has-peek" + tabindex="0" on any element and @include('partials.peek', ['src' => ...]) inside it.
-   Shows on hover, keyboard focus, or tap (touch). Placement: default above-left;
-   add 'below' and/or 'right' via the partial's $pos, e.g. ['pos' => 'below right'].
-   Size: override --peek-w on the host, e.g. style="--peek-w:340px". */
+/* ---------- Reusable na photo popup ----------
+   I-wrap ang trigger sa .has-peek at ilagay sa loob nito ang .peek na larawan.
+   Lumilitaw ito sa hover o keyboard focus; sa touch screen, sa focus.
+   Gamitin ang .peek--below at/o .peek--right para baguhin ang puwesto,
+   at --peek-w para baguhin ang lapad. */
+/* Ang host ang positioning reference ng popup; may focus outline para sa keyboard. */
 .has-peek{ position:relative; }
 .has-peek:focus-visible{ outline:2px solid var(--accent); outline-offset:-2px; border-radius:var(--radius-sm); }
 .peek{
@@ -333,6 +358,7 @@ a.tile::after{ content:''; position:absolute; inset:0; background:linear-gradien
 .peek--below::after{ bottom:auto; top:-6px; }
 .peek--right{ left:auto; right:0; }
 .peek--right::after{ left:auto; right:28px; }
+/* Ipakita ang popup sa hover-capable screen o kapag naka-focus ang trigger. */
 @media (hover:hover){
   .has-peek:hover > .peek,
   .has-peek:focus-visible > .peek{ opacity:1; visibility:visible; transform:none; transition-delay:0s; }
@@ -340,11 +366,12 @@ a.tile::after{ content:''; position:absolute; inset:0; background:linear-gradien
 @media (hover:none){
   .has-peek:focus > .peek{ opacity:1; visibility:visible; transform:none; transition-delay:0s; }
 }
-/* facts band: line the popup up with each fact's text */
+/* Itinatapat ang popup sa text ng bawat fact, kasama ang pagbabago sa mobile grid. */
 .fact .peek{ left:24px; }
 .fact:first-child .peek{ left:0; }
 
-/* ---------- why visit ---------- */
+/* ---------- Mga dahilan para bumisita ---------- */
+/* Paghahati sa text at larawan, kasama ang listahan ng mga highlight at note card. */
 .highlights{ display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:start; }
 .highlights-copy p{ color:var(--ink-soft); }
 .feature-row{
@@ -364,7 +391,8 @@ a.tile::after{ content:''; position:absolute; inset:0; background:linear-gradien
 }
 .notes-card h3{ margin-bottom:12px; }
 
-/* ---------- gallery strip + lightbox ---------- */
+/* ---------- Gallery at lightbox ---------- */
+/* Pahalang na gallery na may snap points at caption sa ibabaw ng larawan. */
 .gallery{
   display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x proximity;
   padding:6px 4px 32px; margin:-6px -4px -14px; -webkit-overflow-scrolling:touch;
@@ -384,6 +412,7 @@ a.tile::after{ content:''; position:absolute; inset:0; background:linear-gradien
 .gallery-thumb::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,18,28,0) 55%, rgba(14,18,28,.78) 100%); }
 .gallery-thumb-caption{ position:absolute; left:16px; right:16px; bottom:14px; z-index:1; color:#fff; font-size:.88rem; line-height:1.35; text-align:left; }
 
+/* Full-screen lightbox: backdrop, larawan, caption, at navigation controls. */
 .lightbox{ position:fixed; inset:0; z-index:300; display:none; align-items:center; justify-content:center; }
 .lightbox.is-open{ display:flex; }
 .lightbox-backdrop{ position:absolute; inset:0; background:rgba(10,12,16,.92); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
@@ -402,6 +431,7 @@ a.tile::after{ content:''; position:absolute; inset:0; background:linear-gradien
 .lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{ background:rgba(255,255,255,.22); }
 body.lightbox-open{ overflow:hidden; }
 
+/* Banner para sa custom trip invitation sa ibaba ng gallery. */
 .custom-strip{
   display:flex; align-items:center; gap:18px; margin-top:34px; padding:18px 22px;
   background:var(--cream); border:1px solid var(--line); border-radius:var(--radius);
@@ -410,7 +440,8 @@ body.lightbox-open{ overflow:hidden; }
 .custom-strip strong{ font-family:var(--font-display); font-size:1.05rem; }
 .custom-strip p{ margin:2px 0 0; font-size:.88rem; color:var(--ink-soft); }
 
-/* ---------- CTA band ---------- */
+/* ---------- Call-to-action banner ---------- */
+/* Dark banner na may gold accent at magkabilang text/button content. */
 .cta-band{
   background:radial-gradient(900px 320px at 88% 0%, rgba(217,165,72,.22), transparent 62%), var(--navy);
   color:#fff; padding-block:54px;
@@ -422,7 +453,8 @@ body.lightbox-open{ overflow:hidden; }
 .cta-with-icon{ display:flex; align-items:center; gap:18px; }
 .cta-icon{ width:48px; height:48px; color:var(--gold); stroke-width:1.2; }
 
-/* ---------- about page sections ---------- */
+/* ---------- Mga section ng About page ---------- */
+/* Layout para sa intro, statistics, quote, values, journey timeline, at director profile. */
 .about-grid{ display:grid; grid-template-columns:1.25fr .75fr; gap:56px; align-items:center; }
 .about-grid p{ color:var(--ink-soft); }
 .stat-row{ display:flex; flex-wrap:wrap; gap:18px 0; margin-top:30px; }
@@ -431,6 +463,7 @@ body.lightbox-open{ overflow:hidden; }
 .stat-item strong{ display:block; font-family:var(--font-display); font-size:1.35rem; line-height:1.1; }
 .stat-item span span,.stat-item div > span{ font-size:.82rem; color:var(--ink-soft); }
 
+/* Quote card na may dekorasyong hugis sa ibaba. */
 .quote-card{
   position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
   min-height:320px; padding:48px 32px; border-radius:22px;
@@ -445,6 +478,7 @@ body.lightbox-open{ overflow:hidden; }
 .quote-card blockquote{ margin:18px 0 14px; font-family:var(--font-display); font-style:italic; font-size:clamp(1.5rem,2.6vw,1.9rem); line-height:1.25; }
 .quote-rule{ width:44px; height:2px; background:var(--gold); border-radius:2px; }
 
+/* Values na naka-column sa malawak na screen at nag-aadjust sa responsive rules. */
 .values{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:28px; }
 .value{ padding:4px 26px 4px 0; margin-right:26px; border-right:1px solid var(--line); }
 .value:last-child{ border-right:0; margin-right:0; padding-right:0; }
@@ -452,6 +486,7 @@ body.lightbox-open{ overflow:hidden; }
 .value h3{ font-size:1.2rem; margin-bottom:6px; }
 .value p{ margin:0; font-size:.9rem; color:var(--ink-soft); }
 
+/* Journey section: larawan at pahalang na timeline ng mahahalagang taon. */
 .journey{ display:grid; grid-template-columns:.9fr 1.1fr; gap:48px; align-items:center; }
 .journey-media{ margin:0; border-radius:var(--radius); overflow:hidden; aspect-ratio:4/3; box-shadow:var(--shadow-md); }
 .journey-media img{ width:100%; height:100%; object-fit:cover; }
@@ -466,6 +501,7 @@ body.lightbox-open{ overflow:hidden; }
 .timeline-h strong{ display:block; font-family:var(--font-display); font-size:1.05rem; color:var(--gold-deep); }
 .timeline-h span{ display:block; font-size:.82rem; line-height:1.4; color:var(--ink-soft); }
 
+/* Profile ng director at quick facts sa huling bahagi ng About page. */
 .director{ display:grid; grid-template-columns:.7fr 1.3fr; gap:56px; align-items:center; }
 .director-portrait{ max-width:320px; margin-inline:auto; width:100%; }
 .director-portrait svg{ width:100%; height:auto; display:block; }
@@ -477,7 +513,8 @@ body.lightbox-open{ overflow:hidden; }
 .quick-facts{ margin-top:8px; }
 .quick-facts .icon{ color:var(--gold-deep); }
 
-/* ---------- footer ---------- */
+/* ---------- Footer ---------- */
+/* Footer background, link columns, at hiwalay na copyright/detail row. */
 .site-footer{ background:var(--navy-deep); color:rgba(255,255,255,.78); padding-block:48px 26px; border-top:1px solid rgba(255,255,255,.08); }
 .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:36px; }
 .footer-grid h4{ font-family:var(--font-display); font-size:1.05rem; color:#fff; margin:0 0 14px; }
@@ -490,7 +527,8 @@ body.lightbox-open{ overflow:hidden; }
   margin-top:34px; padding-top:20px; border-top:1px solid rgba(255,255,255,.12); font-size:.82rem; color:rgba(255,255,255,.55);
 }
 
-/* ---------- toast ---------- */
+/* ---------- Toast notification ---------- */
+/* Fixed na notification sa ibaba ng screen; may hiwalay na variant sa login dialog. */
 .toast{
   position:fixed; left:50%; bottom:28px; z-index:400; max-width:calc(100% - 32px);
   padding:13px 20px; border-radius:999px; background:var(--navy-deep); color:#fff; font-size:.88rem; font-weight:500;
@@ -511,13 +549,14 @@ body.lightbox-open{ overflow:hidden; }
 }
 .login-dialog .toast--dialog:empty{ display:none; }
 
-/* ---------- FAQ ---------- */
+/* ---------- FAQ section ---------- */
+/* Intro heading at jump links papunta sa bawat FAQ category. */
 .faq-head{ text-align:center; max-width:640px; margin:0 auto 36px; }
 .faq-head .eyebrow{ justify-content:center; }
 .faq-head h2{ margin-bottom:.4em; }
 .faq-head p{ color:var(--ink-soft); margin:0; }
 
-/* category jump bar (rounded panel of anchor links) */
+/* Bilugang panel ng mga shortcut papunta sa FAQ categories. */
 .faq-jump{
   display:flex; flex-wrap:wrap; justify-content:center; gap:10px 28px;
   padding:22px 28px; margin-bottom:12px;
@@ -537,7 +576,7 @@ body.lightbox-open{ overflow:hidden; }
 .faq-jump-dot .icon{ width:11px; height:11px; stroke-width:2.4; }
 .faq-jump a:hover .faq-jump-dot{ background:var(--gold-deep); transform:translateY(2px); }
 
-/* one row per category: title on the left, questions on the right */
+/* Bawat category ay may pamagat sa kaliwa at mga tanong sa kanan. */
 .faq-group{
   display:grid; grid-template-columns:4fr 8fr; gap:48px;
   padding-block:44px; border-bottom:1px solid var(--line);
@@ -549,6 +588,7 @@ body.lightbox-open{ overflow:hidden; }
   margin:0; font-size:clamp(1.3rem,2.4vw,1.6rem);
 }
 
+/* Native details/summary accordion: ipinapakita ang sagot kapag binuksan ang tanong. */
 .faq-item{ border-bottom:1px solid var(--line); }
 .faq-item:first-child{ border-top:1px solid var(--line); }
 .faq-item summary{
@@ -561,7 +601,7 @@ body.lightbox-open{ overflow:hidden; }
 .faq-item summary:hover{ color:var(--gold-deep); }
 .faq-item summary:focus-visible{ outline-offset:-3px; border-radius:var(--radius-sm); }
 
-/* plus sign that turns into a minus when the row is open */
+/* Plus icon na nagiging minus kapag bukas ang accordion item. */
 .faq-plus{ position:relative; flex:none; width:16px; height:16px; color:var(--ink-soft); }
 .faq-plus::before,
 .faq-plus::after{
@@ -575,6 +615,7 @@ body.lightbox-open{ overflow:hidden; }
 .faq-answer{ overflow:hidden; }
 .faq-answer p{ margin:0; padding:0 40px 24px 4px; max-width:62ch; color:var(--ink-soft); }
 
+/* Higit pang FAQ link at mas simpleng ayos para sa tablet at phone. */
 .faq-more{ margin-top:28px; background:var(--surface); }
 
 @media (max-width:900px){
@@ -587,7 +628,8 @@ body.lightbox-open{ overflow:hidden; }
   .faq-answer p{ padding-right:4px; }
 }
 
-/* ---------- contact form ---------- */
+/* ---------- Contact form ---------- */
+/* Dalawang column na intro at form; ang bawat field ay may pare-parehong label at input style. */
 .contact{ display:grid; grid-template-columns:5fr 7fr; gap:64px; align-items:start; }
 .contact-intro p{ color:var(--ink-soft); }
 .contact-form{
@@ -616,7 +658,8 @@ body.lightbox-open{ overflow:hidden; }
 
 @media (max-width:900px){
   .contact{ grid-template-columns:1fr; gap:32px; }
-  .nav-actions{ flex-wrap:wrap; }   /* room for Log in / Sign up / Book Now in the mobile menu */
+  /* Pinapahintulutan ang action buttons na bumalot sa mas makitid na menu. */
+  .nav-actions{ flex-wrap:wrap; }
 }
 @media (max-width:640px){
   .contact-row{ grid-template-columns:1fr; }
@@ -627,15 +670,16 @@ body.lightbox-open{ overflow:hidden; }
 #contact{ padding-top:30px; }
 
 /* ==========================================================================
-   Responsive
+   Responsive layout: inaangkop ang grid, spacing, at navigation sa laki ng screen.
    ========================================================================== */
+/* Sa medium screen, dalawang column na lang ang mga card grid. */
 @media (max-width:1024px){
   .trip-grid{ grid-template-columns:repeat(2,1fr); }
   .tile-grid{ grid-template-columns:repeat(2,1fr); }
 }
 
 @media (max-width:900px){
-  /* mobile navigation: hamburger -> X, full-width slide-down panel */
+  /* Hamburger na nagiging X at full-width na menu na bumababa sa mobile view. */
   .nav-toggle{
     display:block; position:relative; width:44px; height:44px; margin-left:auto; cursor:pointer;
     border:1px solid rgba(255,255,255,.35); border-radius:var(--radius-sm); background:rgba(255,255,255,.06);
@@ -668,7 +712,8 @@ body.lightbox-open{ overflow:hidden; }
     display:flex; width:100%; min-height:48px; padding:14px 6px; font-size:1rem; text-align:left; color:rgba(255,255,255,.9);
     border-bottom:1px solid rgba(255,255,255,.08); border-radius:0;
   }
-  .site-nav .nav-trigger{ cursor:default; pointer-events:none; }   /* list is always expanded on phones */
+  /* Sa phone, laging nakabukas ang dropdown links kaya hindi kailangan ng trigger. */
+  .site-nav .nav-trigger{ cursor:default; pointer-events:none; }
   .site-nav > ul > li > a[aria-current="page"],
   .site-nav > ul > li > .nav-trigger[aria-current="page"]{ color:var(--gold); }
   .site-nav > ul > li > a[aria-current="page"]::after,
@@ -699,6 +744,7 @@ body.lightbox-open{ overflow:hidden; }
   .hero-loc{ display:none; }
 }
 
+/* Mas makitid na layout para sa phone: one-column cards at mas maliit na spacing. */
 @media (max-width:640px){
   .container{ padding-inline:18px; }
   .hero-landing{ min-height:0; }
@@ -730,11 +776,13 @@ body.lightbox-open{ overflow:hidden; }
 }
 
 @media (prefers-reduced-motion:reduce){
+  /* Inaalis ang smooth scrolling at transitions para sa reduced-motion preference. */
   html{ scroll-behavior:auto; }
   *,*::before,*::after{ transition:none !important; }
 }
 
-/* ---------- login dialog ---------- */
+/* ---------- Login dialog ---------- */
+/* Modal login window, animated backdrop, at inner content layout. */
 .login-dialog{
   position:fixed; inset:0; width:min(430px,calc(100% - 32px)); max-width:none; max-height:calc(100% - 32px);
   margin:auto; padding:0; overflow:auto; border:0; border-radius:20px; background:var(--surface); color:var(--ink);
@@ -749,6 +797,7 @@ body.lightbox-open{ overflow:hidden; }
 .login-dialog__content::before{
   position:absolute; inset:0 0 auto; height:5px; background:linear-gradient(100deg,#e4b45c,#c8932f); content:'';
 }
+/* Close control, heading, at intro text sa login dialog. */
 .login-dialog__close{
   position:absolute; top:15px; right:15px; display:grid; place-items:center; width:36px; height:36px;
   border:0; border-radius:50%; background:transparent; color:var(--ink-soft); cursor:pointer;
@@ -759,9 +808,11 @@ body.lightbox-open{ overflow:hidden; }
   margin:0 0 7px; color:var(--ink); text-align:center; font:600 1.8rem/1.2 var(--font-display);
 }
 .login-dialog__intro{ margin:0 0 25px; color:var(--ink-soft); text-align:center; font-size:.88rem; }
+/* Animation classes para sa paglipat sa pagitan ng login/auth views. */
 .auth-view--enter-forward{ animation:auth-view-from-right .28s cubic-bezier(.2,.8,.2,1) both; }
 .auth-view--enter-back{ animation:auth-view-from-left .28s cubic-bezier(.2,.8,.2,1) both; }
 .login-form{ display:grid; gap:9px; }
+/* Label at icon/input alignment para sa bawat login field. */
 .login-field{ margin-top:5px; color:var(--ink-soft); font-size:.76rem; font-weight:600; }
 .login-input-wrap{ position:relative; }
 .login-input-wrap .icon{
@@ -782,6 +833,7 @@ body.lightbox-open{ overflow:hidden; }
   box-shadow:0 8px 18px -10px rgba(185,133,43,.9); transition:filter .15s ease, transform .15s ease;
 }
 .login-submit:hover{ filter:brightness(1.05); transform:translateY(-1px); }
+/* Feedback message na nag-e-expand kapag may ipapakitang validation/error text. */
 .login-feedback{
   max-height:0; margin:0; padding:0 12px; overflow:hidden; border:1px solid transparent; border-radius:var(--radius-sm);
   color:#a33b49; text-align:center; font-size:.78rem; opacity:0; transform:scaleX(.72); transform-origin:center;
@@ -792,28 +844,22 @@ body.lightbox-open{ overflow:hidden; }
   opacity:1; transform:scaleX(1);
 }
 .login-feedback[hidden]{ display:block; }
-.login-divider{ display:flex; align-items:center; gap:12px; margin:23px 0 15px; color:var(--ink-soft); font-size:.74rem; }
-.login-divider::before,.login-divider::after{ height:1px; flex:1; background:var(--line); content:''; }
-.login-socials{ display:flex; justify-content:center; gap:10px; }
-.login-social{
-  display:grid; place-items:center; width:40px; height:40px; padding:0; border:0; border-radius:50%;
-  background:var(--navy); color:#fff; font:700 1.12rem Arial,sans-serif; cursor:pointer; transition:transform .15s ease, filter .15s ease;
-}
-.login-social:hover{ background:var(--gold-deep); filter:brightness(1.04); transform:translateY(-2px); }
-.login-social--twitter svg{ width:18px; height:18px; fill:currentColor; }
 .login-signup{ margin:27px 0 0; color:var(--ink-soft); text-align:center; font-size:.77rem; }
 .login-signup .login-link{ margin-left:3px; color:var(--gold-deep); font-weight:700; font-size:inherit; }
 
+/* Mas maliit na padding sa dialog kapag makitid ang screen. */
 @media (max-width:480px){
   .login-dialog__content{ padding:35px 24px 26px; }
 }
 
 @media (prefers-reduced-motion:reduce){
+  /*  system setting na bawasan yung animation at motion. */
   .login-dialog[open],.login-dialog[open]::backdrop,.auth-view--enter-forward,.auth-view--enter-back{ animation:none; }
   .login-feedback{ transition:none; }
-  .login-social,.login-submit{ transition:none; }
+  .login-submit{ transition:none; }
 }
 
+/* Keyframes ng paglabas ng dialog/backdrop at pag-slide ng auth view. */
 @keyframes login-pop-in{
   from{ opacity:0; transform:translateY(18px) scale(.96); }
   to{ opacity:1; transform:translateY(0) scale(1); }
