@@ -231,7 +231,7 @@
     <div class="container contact">
         <div class="contact-intro">
             <span class="eyebrow">Contact</span>
-            <h2>Tell the desk where you want to go</h2>
+            <h2>What Can We Help You With?</h2>
             <p>Questions about a route, a custom multi-nation journey, or a booking? Send a message and the Director's desk will reply, usually within 3–5 business days.</p>
         </div>
 
@@ -265,13 +265,13 @@
             </div>
 
             <div class="contact-field">
-                <label for="contact-nation">Nation of interest</label>
+                <label for="contact-nation">Subject</label>
                 <select id="contact-nation" name="nation">
-                    <option value="">Not sure yet</option>
+                    <option value="">Others</option>
                     @foreach ($nations as $slug => $n)
                         <option value="{{ $slug }}" @selected(old('nation', request('nation')) === $slug)>{{ $n['name'] }}</option>
                     @endforeach
-                    <option value="multi" @selected(old('nation', request('nation')) === 'multi')>Multi-nation journey</option>
+                    <option value="multi" @selected(old('nation', request('nation')) === 'multi')>Custom Itinerary</option>
                 </select>
                 @error('nation') <small class="contact-error">{{ $message }}</small> @enderror
             </div>
