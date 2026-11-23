@@ -19,7 +19,7 @@ return [
         'facts' => [
             ['Best season', 'Late spring to early autumn', 'images/nations/hover-gallery/Late-Spring-Mondstadt.jpg'],
             ['Known for', 'Vineyard valleys & clifftop windmills', 'images/nations/hover-gallery/Vineyard-Valley.jpg'],
-            ['Signature taste', 'Hillside orchard wine', 'images/nations/hover-gallery/Hillside-Orchard-Wine.jpg'],
+            ['Signature taste', 'Hillside orchard wine', 'images/nations/hover-gallery/Signature-Mondstadt.jpg'],
             ['Travel pace', 'Easygoing, festival-led'],
         ],
         'story' => [
@@ -89,7 +89,7 @@ return [
         'facts' => [
             ['Best season', 'Autumn, during the lantern season', 'images/nations/hover-gallery/Lantern-Season-Liyue.jpg'],
             ['Known for', 'Terraced port & jade-toned peaks', 'images/nations/hover-gallery/Terraced-Port.jpg'],
-            ['Signature taste', 'Harbourside tea houses', 'images/nations/hover-gallery/Harbourside-Tea-Houses.jpg'],
+            ['Signature taste', 'Harbourside tea houses', 'images/nations/hover-gallery/Signature-Liyue.jpg'],
             ['Travel pace', 'Measured, mercantile'],
         ],
         'story' => [
@@ -159,7 +159,7 @@ return [
         'facts' => [
             ['Best season', 'Early summer, clearest straits', 'images/nations/hover-gallery/Night-View-Inazuma.jpg'],
             ['Known for', 'Island-hopping ferries & storm-lit skies', 'images/nations/hover-gallery/Island-Hopping-Ferries.jpg'],
-            ['Signature taste', 'Coastal rice & seaweed fare', 'images/nations/hover-gallery/Wakatakeni.jpg'],
+            ['Signature taste', 'Coastal rice & seaweed fare', 'images/nations/hover-gallery/Signature-Inazuma.jpg'],
             ['Travel pace', 'Ceremonial, tide-timed'],
         ],
         'story' => [
@@ -224,7 +224,7 @@ return [
         'facts' => [
             ['Best season', 'Dry season, cooler desert nights', 'images/nations/hover-gallery/Sumeru-Night.jpg'],
             ['Known for', 'Rainforest canopy & sandstone ruins', 'images/nations/hover-gallery/Sandstone-Ruins.jpg'],
-            ['Signature taste', 'Spiced caravan cuisine', 'images/nations/hover-gallery/Tandoori-Chicken.jpg'],
+            ['Signature taste', 'Spiced caravan cuisine', 'images/nations/hover-gallery/Signature-Sumeru.jpg'],
             ['Travel pace', 'Curious, unhurried'],
         ],
         'story' => [
@@ -294,7 +294,7 @@ return [
         'facts' => [
             ['Best season', 'Year-round; opera peaks in winter', 1],
             ['Known for', 'Canal courts & underwater promenades', 2],
-            ['Signature taste', 'Courthouse-district patisserie', 'images/nations/hover-gallery/Fruity-Trio.jpg'],
+            ['Signature taste', 'Courthouse-district patisserie', 'images/nations/hover-gallery/Signature-Fontaine.jpg'],
             ['Travel pace', 'Theatrical, precise'],
         ],
         'story' => [
@@ -364,7 +364,7 @@ return [
         'facts' => [
             ['Best season', 'Festival season, warm dry evenings', 'images/nations/hover-gallery/Festival-Season-Natlan.jpg'],
             ['Known for', 'Terraced plazas & drum processions', 'images/nations/hover-gallery/Terraced-Plazas.jpg'],
-            ['Signature taste', 'Smoke-grilled festival fare', 'images/nations/hover-gallery/Tatacos.jpg'],
+            ['Signature taste', 'Smoke-grilled festival fare', 'images/nations/hover-gallery/Signature-Natlan.jpg'],
             ['Travel pace', 'Warm, communal, loud'],
         ],
         'story' => [
@@ -433,7 +433,7 @@ return [
         'facts' => [
             ['Best season', 'Deep winter, for aurora visibility', 'images/nations/hover-gallery/Aurora-Visibility.jpg'],
             ['Known for', 'Frost palaces & aurora-lit tundra', 4],
-            ['Signature taste', 'Fermented preserves & warm spiced drinks', 'images/nations/hover-gallery/Zharkoye.jpg'],
+            ['Signature taste', 'Fermented preserves & warm spiced drinks', 'images/nations/hover-gallery/Signature-Snezhnaya.jpg'],
             ['Travel pace', 'Reserved, slow-paced'],
         ],
         'story' => [
