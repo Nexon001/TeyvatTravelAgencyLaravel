@@ -235,7 +235,26 @@ it('sends an administrator to the dashboard after logging in', function () {
 it('shows the dashboard to an administrator', function () {
     $response = $this->actingAs(makeUser('admin'))->get(route('admin.dashboard'));
 
-    $response->assertOk()->assertSee('Admin dashboard');
+    $response->assertOk()
+        ->assertSee('Hello Director!')
+        ->assertSee('class="admin-greeting"', false)
+        ->assertDontSee('Signed in as')
+        ->assertDontSee('without opening an admin page')
+        ->assertSee('id="admin-tab-home"', false)
+        ->assertSee('id="admin-panel-home"', false)
+        ->assertSee('Best-selling itineraries')
+        ->assertDontSee('Demo data')
+        ->assertSee('class="admin-stat-grid" data-count-up', false)
+        ->assertSee('id="admin-tab-bookings"', false)
+        ->assertSee('id="admin-tab-itineraries"', false)
+        ->assertSee('id="admin-tab-inquiries"', false)
+        ->assertSee('id="admin-tab-customers"', false)
+        ->assertSee('for="booking-search"', false)
+        ->assertSee('for="itinerary-title"', false)
+        ->assertSee('id="itinerary-price"', false)
+        ->assertSee('type="number" min="0" step="100" placeholder="12500"', false)
+        ->assertSee('for="inquiry-email"', false)
+        ->assertSee('for="customer-search"', false);
 
     // Back button after logout must not show a cached admin page.
     expect($response->headers->get('Cache-Control'))->toContain('no-store');
