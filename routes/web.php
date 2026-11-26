@@ -18,13 +18,11 @@ Route::view('/fontaine', 'Fontaine')->name('fontaine');
 Route::view('/natlan', 'Natlan')->name('natlan');
 Route::view('/snezhnaya', 'Snezhnaya')->name('snezhnaya');
 
-
 // Booking: pick a stay length, then a check-in date on the availability calendar.
 Route::get('/book', [BookingController::class, 'create'])->name('booking');
 Route::get('/book/availability', [BookingController::class, 'availability'])->name('booking.availability')->middleware('throttle:60,1');
 Route::get('/book/csrf', [BookingController::class, 'csrf'])->name('booking.csrf')->middleware('throttle:30,1');
 Route::post('/book', [BookingController::class, 'store'])->name('booking.store')->middleware('throttle:6,1');
-
 
 // Accounts: one login form for travellers and administrators (FR-01, 03, 04, 32).
 Route::middleware('guest')->group(function () {
