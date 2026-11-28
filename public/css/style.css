@@ -655,6 +655,17 @@ body.lightbox-open{ overflow:hidden; }
 .contact-alert--err{ background:#fdeceb; color:#b3261e; }
 .contact-form .btn{ justify-self:start; }
 .contact-hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+.contact-consent{ display:grid; gap:6px; }
+.contact-consent label{ display:flex; gap:10px; align-items:flex-start; font-size:.86rem; line-height:1.5; color:var(--ink-soft); }
+.contact-consent input{ flex:none; width:18px; height:18px; margin-top:2px; accent-color:var(--accent-deep); }
+.contact-consent a{ color:var(--navy); text-decoration:underline; }
+
+/* Privacy Notice page */
+.privacy{ max-width:760px; }
+.privacy h2{ margin:32px 0 8px; font-size:1.25rem; }
+.privacy p, .privacy li{ color:var(--ink-soft); line-height:1.7; }
+.privacy ul{ padding-left:20px; }
+.privacy a{ color:var(--navy); text-decoration:underline; }
 
 @media (max-width:900px){
   .contact{ grid-template-columns:1fr; gap:32px; }

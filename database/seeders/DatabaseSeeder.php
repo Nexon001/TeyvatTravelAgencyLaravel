@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // The seven nations (needed by the contact form). Safe to run again.
+        $this->call(NationSeeder::class);
+
         // User::factory(10)->create();
 
         User::factory()->create([

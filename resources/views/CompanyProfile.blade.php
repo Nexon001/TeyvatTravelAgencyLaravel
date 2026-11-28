@@ -235,11 +235,11 @@
             <p>Questions about a route, a custom multi-nation journey, or a booking? Send a message and the Director's desk will reply, usually within 3–5 business days.</p>
         </div>
 
-        <form class="contact-form" method="POST" action="{{ url('/contact') }}" novalidate>
+        <form class="contact-form" method="POST" action="{{ route('contact.store') }}" novalidate>
             @csrf
 
-            @if (session('status'))
-                <div class="contact-alert contact-alert--ok" role="status">{{ session('status') }}</div>
+            @if (session('contact_status'))
+                <div class="contact-alert contact-alert--ok" role="status">{{ session('contact_status') }}</div>
             @endif
             @if ($errors->any())
                 <div class="contact-alert contact-alert--err" role="alert">Please check the highlighted fields and try again.</div>
@@ -280,6 +280,15 @@
                 <label for="contact-message">Message <span aria-hidden="true">*</span></label>
                 <textarea id="contact-message" name="message" rows="5" required>{{ old('message') }}</textarea>
                 @error('message') <small class="contact-error">{{ $message }}</small> @enderror
+            </div>
+
+            {{-- Data Privacy Act consent (NFR-03). The server refuses the form unless this is ticked. --}}
+            <div class="contact-consent">
+                <label for="contact-consent">
+                    <input type="checkbox" id="contact-consent" name="consent" value="1" @checked(old('consent')) required>
+                    <span>I agree that Teyvat Travel Services may use my name, email and message to reply to this inquiry, as described in the <a href="{{ route('privacy') }}">Privacy Notice</a>. <span aria-hidden="true">*</span></span>
+                </label>
+                @error('consent') <small class="contact-error">{{ $message }}</small> @enderror
             </div>
 
             <button type="submit" class="btn btn-gold">Send Message <svg class="icon"><use href="#i-arrow-right"/></svg></button>
