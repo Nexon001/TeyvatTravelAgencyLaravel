@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ContactController;
 use App\Http\Middleware\AdminIdleTimeout;
 use App\Http\Middleware\EnsureUserIsAdmin;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +20,12 @@ Route::view('/sumeru', 'Sumeru')->name('sumeru');
 Route::view('/fontaine', 'Fontaine')->name('fontaine');
 Route::view('/natlan', 'Natlan')->name('natlan');
 Route::view('/snezhnaya', 'Snezhnaya')->name('snezhnaya');
+
+// Privacy Notice (NFR-03): linked from the consent checkbox on the forms.
+Route::view('/privacy', 'Privacy')->name('privacy');
+
+// Contact form on the home page (FR-30, FR-31). The honeypot and consent checks live in StoreInquiryRequest.
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store')->middleware('throttle:5,1');
 
 // Booking: pick a stay length, then a check-in date on the availability calendar.
 Route::get('/book', [BookingController::class, 'create'])->name('booking');
@@ -40,5 +49,10 @@ Route::middleware(['auth', EnsureUserIsAdmin::class, AdminIdleTimeout::class, 'c
     ->prefix('admin')
     ->name('admin.')
     ->group(function () {
-        Route::view('/', 'admin.dashboard')->name('dashboard');
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+        // Inquiry inbox: email a reply, or change an inquiry's status by hand (FR-43).
+        Route::post('/inquiries/{inquiry}/reply', [InquiryController::class, 'reply'])
+            ->middleware('throttle:20,1')->name('inquiries.reply');
+        Route::patch('/inquiries/{inquiry}/status', [InquiryController::class, 'updateStatus'])->name('inquiries.status');
     });

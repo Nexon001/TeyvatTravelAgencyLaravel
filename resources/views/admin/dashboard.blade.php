@@ -164,6 +164,59 @@
   .admin-inquiry-empty{ display:grid; align-content:center; min-height:250px; }
   .admin-note{ margin:0 0 16px; color:var(--ink-soft); font-size:.85rem; }
 
+  .admin-inbox{ min-width:0; color:var(--ink); }
+  .admin-inbox .admin-chart-card__caption{ margin-bottom:10px; }
+  .admin-inbox__item{ padding:12px 0; border-top:1px solid var(--line); }
+  .admin-inbox__item summary{ display:grid; grid-template-columns:minmax(0,1fr) auto; gap:3px 12px; cursor:pointer; list-style:none; }
+  .admin-inbox__item summary::-webkit-details-marker{ display:none; }
+  .admin-inbox__item summary:focus-visible{ outline:2px solid rgba(217,165,72,.5); outline-offset:3px; }
+  .admin-inbox__from{ grid-area:1/1; font-weight:700; font-size:.88rem; overflow-wrap:anywhere; }
+  .admin-inbox__subject{ grid-area:2/1; color:var(--ink-soft); font-size:.8rem; }
+  .admin-inbox__flags{ grid-area:1/2; justify-self:end; display:flex; gap:6px; align-items:center; }
+  .admin-inbox__status{ padding:2px 9px; border-radius:999px; background:var(--cream); color:var(--gold-deep); font-size:.68rem; font-weight:700; }
+  .admin-inbox__status--resolved{ background:#e7f4ea; color:#1e5b2d; }
+  .admin-inbox__time{ grid-area:2/2; justify-self:end; color:var(--ink-soft); font-size:.72rem; }
+  .admin-inbox__meta{ margin:10px 0 4px; font-size:.82rem; }
+  .admin-inbox__message{ margin:0; font-size:.86rem; line-height:1.6; white-space:pre-line; overflow-wrap:anywhere; }
+
+  .admin-inbox__status--in-progress{ background:#e6eefb; color:#1f4a8a; }
+  .admin-inbox__overdue{ padding:2px 9px; border-radius:999px; background:#fbe3e0; color:#9c241b; font-size:.68rem; font-weight:700; }
+  .admin-inbox__overdue-note{ color:#9c241b; }
+  .admin-inbox__item.is-selected{ margin:0 -10px; padding:12px 10px; border-radius:var(--radius-sm); background:var(--cream); box-shadow:inset 3px 0 0 var(--gold); }
+  .admin-inbox__filters{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:12px; }
+  .admin-inbox__filters input[type="search"]{ flex:1 1 180px; }
+  .admin-inbox__filters input,.admin-inbox__filters select{
+    min-height:38px; padding:7px 10px; border:1px solid rgba(28,33,48,.15); border-radius:var(--radius-sm);
+    background:var(--bg); color:var(--ink); font:400 .82rem var(--font-body);
+  }
+  .admin-submit--small{ padding:8px 14px; font-size:.8rem; }
+  .admin-inbox__clear{ color:var(--ink-soft); font-size:.8rem; text-decoration:underline; }
+  .admin-inbox__flash{ margin:0 0 14px; padding:11px 14px; border-radius:var(--radius-sm); font-size:.86rem; }
+  .admin-inbox__flash--ok{ background:#e7f4ea; color:#1e5b2d; }
+  .admin-inbox__flash--err{ background:#fbe3e0; color:#9c241b; }
+  .admin-inbox__history{ margin-top:12px; padding-left:12px; border-left:2px solid var(--line); }
+  .admin-inbox__history-title{ margin:0 0 6px; font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); }
+  .admin-inbox__reply{ margin-bottom:10px; }
+  .admin-inbox__reply-meta{ margin:0 0 3px; color:var(--ink-soft); font-size:.74rem; }
+  .admin-inbox__status-form{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:12px; font-size:.8rem; color:var(--ink-soft); }
+  .admin-inbox__status-form select{ min-height:34px; padding:5px 8px; border:1px solid rgba(28,33,48,.15); border-radius:var(--radius-sm); background:var(--bg); color:var(--ink); font:400 .8rem var(--font-body); }
+  .admin-inbox__status-btn{ padding:6px 12px; border:1px solid var(--line); border-radius:999px; background:#fff; color:var(--ink); font:600 .78rem var(--font-body); cursor:pointer; }
+  .admin-pager{ display:flex; gap:12px; align-items:center; justify-content:space-between; margin-top:14px; font-size:.8rem; color:var(--ink-soft); }
+  .admin-pager__btn{ padding:6px 12px; border:1px solid var(--line); border-radius:999px; color:var(--ink); text-decoration:none; }
+  .admin-pager__btn[aria-disabled="true"]{ opacity:.45; }
+  .admin-reply{ align-self:start; position:sticky; top:16px; }
+  .admin-reply__target{ margin:0 0 12px; color:var(--ink); font-weight:700; font-size:.9rem; }
+  .admin-reply__quote{ margin:0 0 14px; padding:10px 12px; border-left:3px solid var(--line); background:var(--cream); border-radius:0 var(--radius-sm) var(--radius-sm) 0; max-height:150px; overflow:auto; }
+  .admin-reply__quote-label{ margin:0 0 4px; color:var(--ink-soft); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; }
+  .admin-reply__fields{ min-width:0; margin:0; padding:0; border:0; }
+  .admin-reply__fields:disabled{ opacity:.55; }
+  .admin-field input[readonly]{ background:var(--cream); color:var(--ink-soft); }
+  .admin-field-error{ color:#9c241b; font-size:.78rem; font-weight:400; }
+  .admin-tab__badge{ margin-left:auto; min-width:22px; padding:1px 7px; border-radius:999px; background:var(--gold); color:var(--navy-deep); font-size:.7rem; font-weight:700; text-align:center; }
+  .admin-tab__badge--overdue{ background:#e0645a; color:#fff; }
+  .admin-tab[aria-selected="true"] .admin-tab__badge{ background:var(--navy-deep); color:var(--cream); }
+  .admin-tab[aria-selected="true"] .admin-tab__badge--overdue{ background:#b3261e; color:#fff; }
+
   @media (max-width:980px){
     .admin-workspace{ grid-template-columns:190px minmax(0,1fr); gap:16px 20px; min-height:0; padding:18px; }
     .admin-home-charts{ flex:initial; }
@@ -182,6 +235,7 @@
     .admin-tab{ min-height:42px; padding:8px; font-size:.78rem; }
     .admin-card{ padding:17px; }
     .admin-form-grid,.admin-inquiry-layout{ grid-template-columns:1fr; }
+    .admin-reply{ position:static; }
     .admin-chart-card,.admin-stat-card{ min-height:0; padding:17px; }
     .admin-chart-bars{ gap:6px; height:170px; }
     .admin-field--wide{ grid-column:auto; }
@@ -213,7 +267,8 @@
           <button class="admin-tab" id="admin-tab-home" type="button" role="tab" aria-controls="admin-panel-home" aria-selected="true" tabindex="0" data-admin-tab="home">Home</button>
           <button class="admin-tab" id="admin-tab-bookings" type="button" role="tab" aria-controls="admin-panel-bookings" aria-selected="false" tabindex="-1" data-admin-tab="bookings">Bookings</button>
           <button class="admin-tab" id="admin-tab-itineraries" type="button" role="tab" aria-controls="admin-panel-itineraries" aria-selected="false" tabindex="-1" data-admin-tab="itineraries">Itineraries</button>
-          <button class="admin-tab" id="admin-tab-inquiries" type="button" role="tab" aria-controls="admin-panel-inquiries" aria-selected="false" tabindex="-1" data-admin-tab="inquiries">Inquiries</button>
+          <button class="admin-tab" id="admin-tab-inquiries" type="button" role="tab" aria-controls="admin-panel-inquiries" aria-selected="false" tabindex="-1" data-admin-tab="inquiries">Inquiries
+            @if ($openCount > 0)<span class="admin-tab__badge{{ $overdueCount > 0 ? ' admin-tab__badge--overdue' : '' }}" aria-label="{{ $openCount }} unanswered{{ $overdueCount > 0 ? ', '.$overdueCount.' overdue' : '' }}">{{ $openCount }}</span>@endif</button>
           <button class="admin-tab" id="admin-tab-customers" type="button" role="tab" aria-controls="admin-panel-customers" aria-selected="false" tabindex="-1" data-admin-tab="customers">Customers</button>
         </div>
         <p class="admin-sidebar__note">Travel operations overview.</p>
@@ -387,28 +442,144 @@
       <section class="admin-panel" id="admin-panel-inquiries" role="tabpanel" aria-labelledby="admin-tab-inquiries" data-admin-panel="inquiries" hidden>
         <h2 class="admin-panel__heading">Inquiries</h2>
         <p class="admin-panel__intro">Review contact messages and prepare a reply.</p>
+        @if (request()->hasAny(['q', 'status', 'subject', 'page']) || session()->hasAny(['inquiry_status', 'inquiry_error']) || old('inquiry_id'))
+          {{-- Tells the script below to open this tab after a filter, a page change or a reply. --}}
+          <span hidden data-admin-start-tab="inquiries"></span>
+        @endif
+        @if (session('inquiry_status'))
+          <p class="admin-inbox__flash admin-inbox__flash--ok" role="status">{{ session('inquiry_status') }}</p>
+        @endif
+        @if (session('inquiry_error'))
+          <p class="admin-inbox__flash admin-inbox__flash--err" role="alert">{{ session('inquiry_error') }}</p>
+        @endif
+        @php
+          $filtering = $filters['q'] !== '' || $filters['status'] !== '' || $filters['subject'] !== '';
+        @endphp
         <div class="admin-inquiry-layout">
-          <div class="admin-card admin-inquiry-empty">
-            <h3 class="admin-panel__heading">Inbox</h3>
-            <p class="admin-empty">The inquiry inbox and replies are coming soon.</p>
+          {{-- Messages sent through the home page contact form (FR-31). Click one to reply to it (FR-43). --}}
+          <div class="admin-card admin-inbox">
+            <h3 class="admin-chart-card__heading">Inbox</h3>
+            <p class="admin-chart-card__caption">
+              @if ($filtering){{ $inquiries->total() }} of {{ $inquiryTotal }} messages match @else{{ $inquiryTotal }} {{ $inquiryTotal === 1 ? 'message' : 'messages' }} @endif
+              · {{ $openCount }} unanswered{!! $overdueCount > 0 ? ', <strong class="admin-inbox__overdue-note">'.e($overdueCount).' overdue</strong>' : '' !!}
+            </p>
+
+            <form class="admin-inbox__filters" method="GET" action="{{ route('admin.dashboard') }}" role="search">
+              <input type="search" name="q" value="{{ $filters['q'] }}" placeholder="Search name, email or message" aria-label="Search messages" maxlength="100">
+              <select name="status" aria-label="Filter by status">
+                <option value="">All statuses</option>
+                <option value="open" @selected($filters['status'] === 'open')>Unanswered</option>
+                <option value="overdue" @selected($filters['status'] === 'overdue')>Overdue</option>
+                <option value="pending" @selected($filters['status'] === 'pending')>Pending</option>
+                <option value="in progress" @selected($filters['status'] === 'in progress')>In progress</option>
+                <option value="resolved" @selected($filters['status'] === 'resolved')>Resolved</option>
+              </select>
+              <select name="subject" aria-label="Filter by subject">
+                <option value="">All subjects</option>
+                @foreach ($subjects as $subjectName)
+                  <option value="{{ $subjectName }}" @selected($filters['subject'] === $subjectName)>{{ $subjectName }}</option>
+                @endforeach
+              </select>
+              <button type="submit" class="admin-submit admin-submit--small">Filter</button>
+              @if ($filtering)
+                <a class="admin-inbox__clear" href="{{ route('admin.dashboard') }}">Clear</a>
+              @endif
+            </form>
+
+            @forelse ($inquiries as $inquiry)
+              <details class="admin-inbox__item" data-inquiry
+                       data-inquiry-id="{{ $inquiry->id }}"
+                       data-name="{{ $inquiry->name }}"
+                       data-email="{{ $inquiry->email }}"
+                       data-reply-subject="{{ $inquiry->replySubject() }}"
+                       data-reply-url="{{ route('admin.inquiries.reply', $inquiry) }}">
+                <summary>
+                  <span class="admin-inbox__from">{{ $inquiry->name }}</span>
+                  <span class="admin-inbox__subject">{{ $inquiry->subject }}</span>
+                  <span class="admin-inbox__flags">
+                    @if ($inquiry->isOverdue())<span class="admin-inbox__overdue">Overdue</span>@endif
+                    <span class="admin-inbox__status admin-inbox__status--{{ str_replace(' ', '-', $inquiry->status) }}">{{ ucfirst($inquiry->status) }}</span>
+                  </span>
+                  <time class="admin-inbox__time" datetime="{{ $inquiry->created_at->toIso8601String() }}">{{ $inquiry->created_at->timezone('Asia/Manila')->format('M j, Y g:i A') }}</time>
+                </summary>
+                <p class="admin-inbox__meta"><a href="mailto:{{ $inquiry->email }}">{{ $inquiry->email }}</a></p>
+                <p class="admin-inbox__message">{{ $inquiry->message }}</p>
+
+                @if ($inquiry->replies->isNotEmpty())
+                  <div class="admin-inbox__history">
+                    <h4 class="admin-inbox__history-title">Replies</h4>
+                    @foreach ($inquiry->replies as $reply)
+                      <article class="admin-inbox__reply">
+                        <p class="admin-inbox__reply-meta">{{ $reply->sent_at->timezone('Asia/Manila')->format('M j, Y g:i A') }} · {{ $reply->user?->name ?? 'Admin' }}</p>
+                        <p class="admin-inbox__message">{{ $reply->body }}</p>
+                      </article>
+                    @endforeach
+                  </div>
+                @endif
+
+                <form class="admin-inbox__status-form" method="POST" action="{{ route('admin.inquiries.status', $inquiry) }}">
+                  @csrf
+                  @method('PATCH')
+                  <label for="status-{{ $inquiry->id }}">Status</label>
+                  <select id="status-{{ $inquiry->id }}" name="status">
+                    @foreach (\App\Models\Inquiry::STATUSES as $statusOption)
+                      <option value="{{ $statusOption }}" @selected($inquiry->status === $statusOption)>{{ ucfirst($statusOption) }}</option>
+                    @endforeach
+                  </select>
+                  <button type="submit" class="admin-inbox__status-btn">Update</button>
+                </form>
+              </details>
+            @empty
+              <p class="admin-empty">
+                @if ($filtering)No messages match these filters.@else No messages yet. Messages sent from the contact form appear here.@endif
+              </p>
+            @endforelse
+
+            @if ($inquiries->hasPages())
+              <nav class="admin-pager" aria-label="Inbox pages">
+                @if ($inquiries->onFirstPage())
+                  <span class="admin-pager__btn" aria-disabled="true">Previous</span>
+                @else
+                  <a class="admin-pager__btn" href="{{ $inquiries->previousPageUrl() }}">Previous</a>
+                @endif
+                <span>Page {{ $inquiries->currentPage() }} of {{ $inquiries->lastPage() }}</span>
+                @if ($inquiries->hasMorePages())
+                  <a class="admin-pager__btn" href="{{ $inquiries->nextPageUrl() }}">Next</a>
+                @else
+                  <span class="admin-pager__btn" aria-disabled="true">Next</span>
+                @endif
+              </nav>
+            @endif
           </div>
-          <form class="admin-card" data-admin-demo-form>
+
+          {{-- The recipient is locked and always comes from the picked message; the server ignores anything typed here. --}}
+          <form class="admin-card admin-reply" method="POST" action="{{ route('admin.dashboard') }}" data-reply-form data-selected-id="{{ old('inquiry_id') }}">
+            @csrf
+            <input type="hidden" name="inquiry_id" value="{{ old('inquiry_id') }}">
             <p class="admin-note">Reply composer</p>
-            <div class="admin-form-grid">
-              <label class="admin-field admin-field--wide" for="inquiry-email">Recipient email
-                <input id="inquiry-email" name="email" type="email" placeholder="traveler@example.com" required>
-              </label>
-              <label class="admin-field admin-field--wide" for="inquiry-subject">Subject
-                <input id="inquiry-subject" name="subject" type="text" placeholder="Re: Your travel inquiry" required>
-              </label>
-              <label class="admin-field admin-field--wide" for="inquiry-reply">Reply message
-                <textarea id="inquiry-reply" name="reply" placeholder="Write a reply..." required></textarea>
-              </label>
+            <p class="admin-reply__target" data-reply-target aria-live="polite">Click a message in the inbox to reply to it.</p>
+            <div class="admin-reply__quote" data-reply-quote hidden>
+              <p class="admin-reply__quote-label">Their message</p>
+              <p class="admin-inbox__message" data-reply-quote-text></p>
             </div>
-            <div class="admin-form-actions">
-              <button class="admin-submit" type="submit">Send reply</button>
-              <p class="admin-form-status" role="status" aria-live="polite" data-admin-status hidden></p>
-            </div>
+            <fieldset class="admin-reply__fields" data-reply-fields disabled>
+              <div class="admin-form-grid">
+                <label class="admin-field admin-field--wide" for="inquiry-email">Recipient email
+                  <input id="inquiry-email" type="email" placeholder="Filled in when you pick a message" readonly>
+                </label>
+                <label class="admin-field admin-field--wide" for="inquiry-subject">Subject
+                  <input id="inquiry-subject" name="subject" type="text" maxlength="150" value="{{ old('subject') }}" placeholder="Re: Your travel inquiry" required>
+                  @error('subject')<small class="admin-field-error">{{ $message }}</small>@enderror
+                </label>
+                <label class="admin-field admin-field--wide" for="inquiry-reply">Reply message
+                  <textarea id="inquiry-reply" name="body" maxlength="5000" placeholder="Write a reply..." required>{{ old('body') }}</textarea>
+                  @error('body')<small class="admin-field-error">{{ $message }}</small>@enderror
+                </label>
+              </div>
+              <div class="admin-form-actions">
+                <button class="admin-submit" type="submit">Send reply</button>
+              </div>
+            </fieldset>
           </form>
         </div>
         </section>
@@ -506,6 +677,65 @@
         }
       });
     });
+
+    // Open the Inquiries tab after a filter, a page change or a reply.
+    var startMarker = document.querySelector('[data-admin-start-tab]');
+    if (startMarker) {
+      var startTab = tabs.filter(function (t) { return t.dataset.adminTab === startMarker.dataset.adminStartTab; })[0];
+      if (startTab) activateTab(startTab, false);
+    }
+
+    // Inquiry inbox: clicking a message fills the reply form. The recipient is locked to that customer's email.
+    (function () {
+      var form = document.querySelector('[data-reply-form]');
+      if (!form) return;
+      var items = Array.prototype.slice.call(document.querySelectorAll('[data-inquiry]'));
+      var fields = form.querySelector('[data-reply-fields]');
+      var target = form.querySelector('[data-reply-target]');
+      var quote = form.querySelector('[data-reply-quote]');
+      var quoteText = form.querySelector('[data-reply-quote-text]');
+      var recipient = form.querySelector('#inquiry-email');
+      var subject = form.querySelector('#inquiry-subject');
+      var body = form.querySelector('#inquiry-reply');
+      var idField = form.querySelector('[name="inquiry_id"]');
+      var submit = form.querySelector('[type="submit"]');
+      var current = null;
+
+      function select(item, keepValues) {
+        if (item === current) return;
+        if (!keepValues && current && body.value.trim() !== '' &&
+            !window.confirm('Discard the reply you started for ' + current.dataset.name + '?')) return;
+        current = item;
+        items.forEach(function (i) { i.classList.toggle('is-selected', i === item); });
+        form.action = item.dataset.replyUrl;
+        idField.value = item.dataset.inquiryId;
+        recipient.value = item.dataset.email;
+        target.textContent = 'Replying to ' + item.dataset.name;
+        quoteText.textContent = item.querySelector('.admin-inbox__message').textContent;
+        quote.hidden = false;
+        fields.disabled = false;
+        if (!keepValues) {
+          subject.value = item.dataset.replySubject;
+          body.value = '';
+        }
+      }
+
+      items.forEach(function (item) {
+        item.querySelector('summary').addEventListener('click', function () { select(item, false); });
+      });
+
+      // After a failed send or a validation error, pick the same message again and keep what was typed.
+      var restoreId = form.dataset.selectedId;
+      if (restoreId) {
+        var again = items.filter(function (i) { return i.dataset.inquiryId === restoreId; })[0];
+        if (again) { again.open = true; select(again, true); }
+      }
+
+      form.addEventListener('submit', function () {
+        submit.disabled = true;
+        submit.textContent = 'Sending...';
+      });
+    })();
   })();
 </script>
 @endsection

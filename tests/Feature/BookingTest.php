@@ -33,7 +33,7 @@ function fillDays(string $checkIn, int $days, string $status = 'confirmed'): voi
 it('shows the booking page', function () {
     $this->get(route('booking'))
         ->assertOk()
-        ->assertSee('Choose your dates and stay length');
+        ->assertSee('Plan your stay', 'Where to?');
 });
 
 it('reports the slots left on each day', function () {

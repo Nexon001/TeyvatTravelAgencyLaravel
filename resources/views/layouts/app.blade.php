@@ -95,6 +95,7 @@
         <li><a href="{{ route('home') }}#itineraries">Featured itineraries</a></li>
         <li><a href="{{ route('home') }}#faq">FAQs</a></li>
         <li><a href="{{ route('home') }}#contact">Contact us</a></li>
+        <li><a href="{{ route('privacy') }}">Privacy Notice</a></li>
         <li><a href="mailto:{{ config('app.desk_email') }}">{{ config('app.desk_email') }}</a></li>
       </ul>
     </div>
